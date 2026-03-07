@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  ZLATO WEBSITE — EDITING GUIDE (for VS Code)
+  ============================================================
+  Use Cmd+F (Mac) or Ctrl+F (Windows) to search for items below.
+
+  FILES (all must be in the same folder as index.html):
+  - zlatoLogo.png   → Logo. To swap, replace the file, keep the filename.
+  - bb-53.jpg       → Headshot in About section. Same deal.
+
+  LINKS TO UPDATE:
+  - Email:      Search "mailto:" → currently mailto:blagica@zlato.co
+  - Calendly:   Search "calendly" → currently https://calendly.com/blagica-bottigliero/chat
+  - LinkedIn:   Search "linkedin" → currently https://www.linkedin.com/in/blagicabottigliero/
+  - Website:    Search "blagica.com" → currently https://blagica.com
+  - Phone:      Search "312" → currently 312.890.2564
+
+  COLORS (search ":root" to find all CSS variables):
+  - --gold: #E8A917       → Primary gold
+  - --orange: #E07A1E     → Orange accent (tags, hover states)
+  - --red: #D1432A        → Red in gradient
+  - --black: #1A1A1A      → Dark text, buttons
+
+  KEY SECTIONS (search these words to jump to each):
+  - "hero"          → Main headline, subtext, stat numbers
+  - "marquee"       → Scrolling ticker (items are duplicated for seamless loop — edit BOTH sets)
+  - "dual-section"  → Consultancy vs Zlato Labs cards + service pills
+  - "how-section"   → Pinch Hit / Embedded / Teach cards
+  - "services"      → 16-item capability grid
+  - "startups"      → Founder section, stats, 3 engagement cards
+  - "cred"          → Brand/client name list
+  - "gold-section"  → Злато meaning section
+  - "testimonials"  → Two quote cards (one filled, one placeholder)
+  - "about"         → Bio, headshot, badges, 4 experience cards
+  - "contact"       → CTA with email + Calendly + phone
+  - "footer"        → Footer links
+
+  HOW TO ADD/REMOVE SERVICE PILLS:
+    Add:    <span class="service-pill">New Service Name</span>
+    Remove: Delete the entire <span>...</span> block
+
+  HOW TO EDIT TESTIMONIALS:
+    Search "testimonial-quote" to find quote text
+    Search "testimonial-author" to find name/title/company
+    Format: <strong>Name</strong> &middot; Title, Company
+
+  HOW TO ADD A BRAND TO CRED SECTION:
+    Add:    <span class="cred-item">Brand Name</span>
+    Remove: Delete the entire <span>...</span> block
+
+  HOW TO ADD AN ABOUT BADGE:
+    Add:    <span class="badge">New Badge</span>
+
+  DEPLOYMENT:
+    Push these 3 files to your GitHub repo root:
+    1. index.html
+    2. zlatoLogo.png
+    3. bb-53.jpg
+    Enable GitHub Pages in repo Settings → Pages → Source: main branch
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zlato — Growth Consultancy + Studio</title>
+<meta name="description" content="Zlato is a fractional growth marketing consultancy and product studio. Strategy that ships. Led by Blagica Bottigliero.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #E8A917;
+  --gold-light: #F5C842;
+  --orange: #E07A1E;
+  --red: #D1432A;
+  --gradient: linear-gradient(135deg, var(--gold-light), var(--gold), var(--orange), var(--red));
+  --black: #1A1A1A;
+  --dark: #2A2A2A;
+  --white: #FFFFFF;
+  --border: #E8E6E1;
+  --border-light: #F0EEEA;
+  --text: #333333;
+  --text-light: #777777;
+  --text-lighter: #AAAAAA;
+  --font-serif: 'DM Serif Display', serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--white); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-light);
+}
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo img { height: 34px; width: auto; }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); text-decoration: none; transition: color 0.3s; }
+.nav-links a:hover { color: var(--orange); }
+.nav-cta { background: var(--black) !important; color: var(--white) !important; padding: 0.5rem 1.25rem !important; border-radius: 2px; font-weight: 700 !important; }
+.nav-cta:hover { background: var(--dark) !important; }
+.mobile-toggle { display: none; background: none; border: none; color: var(--black); font-size: 1.5rem; cursor: pointer; }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 5rem; }
+.hero::before { content: ''; position: absolute; top: -20%; right: -15%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(232,169,23,0.06) 0%, rgba(224,122,30,0.03) 40%, transparent 70%); pointer-events: none; }
+.hero::after { content: 'ZLATO'; position: absolute; bottom: -3%; right: -2%; font-family: var(--font-serif); font-weight: 400; font-size: clamp(8rem, 18vw, 20rem); color: rgba(232,169,23,0.04); letter-spacing: -0.02em; pointer-events: none; line-height: 1; }
+.hero-content { position: relative; z-index: 2; }
+.hero-logo { height: 80px; width: auto; margin-bottom: 2.5rem; }
+.hero-tag { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--orange); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+.hero-tag::before { content: ''; width: 2rem; height: 1px; background: var(--orange); }
+.hero h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(2.8rem, 6vw, 4.8rem); line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 1.75rem; max-width: 800px; color: var(--black); }
+.hero h1 .gradient { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero h1 .italic { font-style: italic; color: var(--text-light); }
+.hero-sub { font-size: 1.05rem; line-height: 1.75; color: var(--text-light); max-width: 560px; margin-bottom: 2.5rem; font-weight: 300; }
+.hero-sub strong { color: var(--black); font-weight: 500; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; background: var(--black); color: var(--white); font-family: var(--font-mono); font-size: 0.7rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; border: none; cursor: pointer; transition: all 0.3s; }
+.btn-primary:hover { background: var(--dark); transform: translateY(-2px); }
+.btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; background: transparent; color: var(--black); font-family: var(--font-mono); font-size: 0.7rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; border: 1px solid var(--border); cursor: pointer; transition: all 0.3s; }
+.btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+
+.hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+.hero-stat-num { font-family: var(--font-serif); font-weight: 400; font-size: 2rem; color: var(--black); line-height: 1; }
+.hero-stat-label { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-lighter); margin-top: 0.4rem; }
+
+/* MARQUEE */
+.marquee-section { padding: 1.25rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; }
+.marquee-track { display: flex; gap: 2.5rem; animation: marquee 35s linear infinite; width: max-content; }
+.marquee-item { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-lighter); white-space: nowrap; display: flex; align-items: center; gap: 2.5rem; }
+.marquee-item::after { content: '\25C6'; color: var(--orange); font-size: 0.35rem; }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* SHARED */
+.section-tag { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--orange); margin-bottom: 1.25rem; }
+.section-title { font-family: var(--font-serif); font-weight: 400; font-size: clamp(1.8rem, 3.5vw, 2.8rem); letter-spacing: -0.01em; line-height: 1.12; color: var(--black); }
+
+/* DUAL */
+.dual-section { padding: 7rem 0; }
+.dual-header { text-align: center; margin-bottom: 4rem; }
+.dual-header .section-title { max-width: 650px; margin: 0 auto; }
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.dual-card { background: var(--white); border: 1px solid var(--border); padding: 3rem; position: relative; overflow: hidden; transition: all 0.4s; }
+.dual-card:hover { box-shadow: 0 8px 40px rgba(0,0,0,0.06); }
+.dual-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.dual-card.client::before { background: var(--gradient); }
+.dual-card.studio::before { background: linear-gradient(90deg, #1A1A1A, #555); }
+.dual-card-label { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 1rem; }
+.dual-card.client .dual-card-label { color: var(--orange); }
+.dual-card.studio .dual-card-label { color: var(--text-light); }
+.dual-card h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.8rem; margin-bottom: 1rem; line-height: 1.2; color: var(--black); }
+.dual-card p { color: var(--text-light); line-height: 1.75; font-size: 0.92rem; font-weight: 300; margin-bottom: 2rem; }
+.dual-card-services { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 2rem; }
+.service-pill { padding: 0.3rem 0.7rem; border-radius: 2px; font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.dual-card.client .service-pill { background: rgba(232,169,23,0.06); color: var(--orange); border: 1px solid rgba(232,169,23,0.15); }
+.dual-card.studio .service-pill { background: #F3F2EF; color: var(--text-light); border: 1px solid var(--border); }
+
+/* HOW */
+.how-section { padding: 6rem 0 7rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.how-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; gap: 2rem; }
+.how-header p { max-width: 380px; color: var(--text-light); font-size: 0.92rem; line-height: 1.7; font-weight: 300; }
+.how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.how-card { background: var(--white); border: 1px solid var(--border); padding: 2.25rem 2rem; position: relative; transition: all 0.4s; }
+.how-card:hover { box-shadow: 0 6px 30px rgba(0,0,0,0.05); transform: translateY(-3px); }
+.how-card-num { font-family: var(--font-serif); font-size: 2.5rem; color: rgba(232,169,23,0.12); position: absolute; top: 1rem; right: 1.5rem; line-height: 1; }
+.how-card h4 { font-family: var(--font-serif); font-weight: 400; font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--black); }
+.how-card p { color: var(--text-light); font-size: 0.88rem; line-height: 1.7; font-weight: 300; }
+
+/* SERVICES */
+.services-section { padding: 7rem 0; }
+.services-header { margin-bottom: 3.5rem; }
+.services-header .section-title { max-width: 550px; }
+.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.service-item { background: var(--white); padding: 1.75rem 1.5rem; transition: all 0.3s; cursor: default; }
+.service-item:hover { background: #FAFAF8; }
+.service-item h5 { font-family: var(--font-serif); font-weight: 400; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--black); transition: color 0.3s; }
+.service-item:hover h5 { color: var(--orange); }
+.service-item p { font-size: 0.78rem; color: var(--text-light); line-height: 1.6; font-weight: 300; }
+
+/* STARTUPS */
+.startup-section { padding: 7rem 0; background: var(--black); color: var(--white); }
+.startup-section .section-tag { color: var(--gold); }
+.startup-top { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 4rem; align-items: start; }
+.startup-top .section-title { color: var(--white); margin-bottom: 1.5rem; }
+.startup-top .section-title .gradient { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.startup-top p { color: #999; font-size: 0.95rem; line-height: 1.75; font-weight: 300; }
+.startup-right { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 2.25rem; }
+.startup-right::before { content: ''; display: block; width: 100%; height: 2px; background: var(--gradient); margin-bottom: 2rem; }
+.startup-stat { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.startup-stat:last-child { margin-bottom: 0; padding-bottom: 0; border: none; }
+.startup-stat-num { font-family: var(--font-serif); font-size: 1.5rem; color: var(--gold); min-width: 75px; }
+.startup-stat-text { font-size: 0.85rem; color: #888; line-height: 1.55; }
+.startup-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.startup-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); padding: 2rem; transition: all 0.4s; }
+.startup-card:hover { border-color: var(--gold); background: rgba(255,255,255,0.05); }
+.startup-card h4 { font-family: var(--font-serif); font-weight: 400; font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--white); }
+.startup-card p { font-size: 0.83rem; color: #888; line-height: 1.65; font-weight: 300; }
+.startup-card .price-tag { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-top: 1rem; display: block; }
+
+/* CRED */
+.cred-section { padding: 5rem 0; border-top: 1px solid var(--border); }
+.cred-header { text-align: center; margin-bottom: 2.5rem; }
+.cred-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem 2.5rem; max-width: 900px; margin: 0 auto; }
+.cred-item { font-family: var(--font-serif); font-size: 1.05rem; color: var(--text-lighter); transition: all 0.3s; }
+.cred-item:hover { color: var(--orange); }
+
+/* TESTIMONIALS */
+.testimonials-section { padding: 6rem 0; border-top: 1px solid var(--border); }
+.testimonials-header { text-align: center; margin-bottom: 3.5rem; }
+.testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.testimonial-card { border: 1px solid var(--border); padding: 2.5rem; position: relative; }
+.testimonial-card::before { content: '\201C'; position: absolute; top: 1.25rem; left: 1.5rem; font-family: var(--font-serif); font-size: 4rem; line-height: 1; color: rgba(232,169,23,0.15); }
+.testimonial-quote { font-family: var(--font-serif); font-size: 1.05rem; font-style: italic; color: var(--text); line-height: 1.7; margin-bottom: 1.5rem; padding-top: 1rem; }
+.testimonial-author { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-lighter); }
+.testimonial-author strong { color: var(--text-light); font-weight: 700; }
+
+/* GOLD MEANING */
+.gold-section { padding: 6rem 0; text-align: center; position: relative; overflow: hidden; }
+.gold-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(232,169,23,0.05) 0%, transparent 70%); pointer-events: none; }
+.gold-content { position: relative; z-index: 2; }
+.gold-word { font-family: var(--font-serif); font-weight: 400; font-size: clamp(4rem, 10vw, 7.5rem); letter-spacing: -0.02em; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; margin-bottom: 1rem; }
+.gold-meaning { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--orange); margin-bottom: 1.5rem; }
+.gold-desc { font-size: 1.05rem; color: var(--text-light); max-width: 500px; margin: 0 auto; line-height: 1.75; font-weight: 300; }
+
+/* ABOUT */
+.about-section { padding: 7rem 0; border-top: 1px solid var(--border); }
+.about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+.about-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; border: 1px solid var(--border); }
+.about-photo-caption { margin-top: 1rem; font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-lighter); }
+.about-right-col .section-title { margin-bottom: 1.25rem; }
+.about-right-col p { color: var(--text-light); font-size: 0.92rem; line-height: 1.75; font-weight: 300; margin-bottom: 0.75rem; }
+.about-right-col p strong { color: var(--black); font-weight: 500; }
+.about-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.5rem; }
+.badge { padding: 0.35rem 0.8rem; background: rgba(232,169,23,0.06); border: 1px solid rgba(232,169,23,0.15); border-radius: 2px; font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); }
+.about-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 3.5rem; }
+.about-card { background: var(--white); border: 1px solid var(--border); padding: 1.5rem; transition: all 0.3s; }
+.about-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+.about-card-title { font-family: var(--font-serif); font-weight: 400; font-size: 0.95rem; margin-bottom: 0.4rem; color: var(--black); }
+.about-card-desc { font-size: 0.78rem; color: var(--text-light); line-height: 1.55; font-weight: 300; }
+
+/* CTA */
+.cta-section { padding: 8rem 0; text-align: center; position: relative; border-top: 1px solid var(--border); }
+.cta-section::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(232,169,23,0.04) 0%, transparent 70%); pointer-events: none; }
+.cta-content { position: relative; z-index: 2; }
+.cta-content h2 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(2.2rem, 4.5vw, 3.5rem); letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 1.25rem; color: var(--black); }
+.cta-content h2 .gradient { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.cta-content p { color: var(--text-light); font-size: 1rem; max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.7; font-weight: 300; }
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.cta-meta { margin-top: 2rem; font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-lighter); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* FOOTER */
+footer { padding: 2.5rem 0; border-top: 1px solid var(--border); }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; }
+.footer-left img { height: 28px; width: auto; }
+.footer-center { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-lighter); }
+.footer-right { display: flex; gap: 1.5rem; }
+.footer-right a { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-lighter); text-decoration: none; transition: color 0.3s; }
+.footer-right a:hover { color: var(--orange); }
+
+/* ANIMATIONS */
+.fade-up { opacity: 0; transform: translateY(25px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .startup-top { grid-template-columns: 1fr; gap: 2rem; }
+  .about-cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .dual-grid { grid-template-columns: 1fr; }
+  .how-grid { grid-template-columns: 1fr; }
+  .how-header { flex-direction: column; align-items: flex-start; }
+  .services-grid { grid-template-columns: 1fr; }
+  .startup-cards { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-cards { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-wrap: wrap; gap: 2rem; }
+  .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+  .hero { padding-top: 6rem; }
+  nav { padding: 0.75rem 1.5rem; }
+  .container { padding: 0 1.5rem; }
+}
+
+.mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+.mobile-nav.active { display: flex; }
+.mobile-nav a { font-family: var(--font-serif); font-size: 1.6rem; color: var(--black); text-decoration: none; transition: color 0.3s; }
+.mobile-nav a:hover { color: var(--orange); }
+.mobile-nav-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: var(--black); font-size: 1.8rem; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo"><img src="zlatoLogo.png" alt="Zlato"></a>
+  <div class="nav-links">
+    <a href="#dual">How It Works</a>
+    <a href="#services">Capabilities</a>
+    <a href="#startups">Startups</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="nav-cta">Let's Talk &#8594;</a>
+  </div>
+  <button class="mobile-toggle" onclick="document.querySelector('.mobile-nav').classList.add('active')" aria-label="Open menu">&#9776;</button>
+</nav>
+
+<div class="mobile-nav">
+  <button class="mobile-nav-close" onclick="this.parentElement.classList.remove('active')" aria-label="Close menu">&#10005;</button>
+  <a href="#dual" onclick="this.parentElement.classList.remove('active')">How It Works</a>
+  <a href="#services" onclick="this.parentElement.classList.remove('active')">Capabilities</a>
+  <a href="#startups" onclick="this.parentElement.classList.remove('active')">Startups</a>
+  <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+  <a href="#contact" onclick="this.parentElement.classList.remove('active')">Let's Talk</a>
+</div>
+
+<section class="hero">
+  <div class="container hero-content">
+    <img src="zlatoLogo.png" alt="Zlato" class="hero-logo">
+    <div class="hero-tag">Fractional Growth Marketing Consultancy + Product Studio</div>
+    <h1>Strategy that <span class="gradient">ships.</span><br>Growth that <span class="italic">compounds.</span></h1>
+    <p class="hero-sub">Zlato is a <strong>fractional growth marketing consultancy</strong> and <strong>product studio</strong> for brands that need more than a deck. We embed with your team, build the system, lower your CAC and get out. Or we stick around. Either way &mdash; <strong>the work is the proof.</strong></p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Book a Strategy Call &#8594;</a>
+      <a href="#dual" class="btn-secondary">See How It Works</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hero-stat-num">25+</div><div class="hero-stat-label">Years in Digital</div></div>
+      <div><div class="hero-stat-num">$1M+</div><div class="hero-stat-label">Rev Built in 10 Mo</div></div>
+      <div><div class="hero-stat-num">F100</div><div class="hero-stat-label">to Seed Stage</div></div>
+      <div><div class="hero-stat-num">Emmy</div><div class="hero-stat-label">Award Winner</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">Growth Strategy</span><span class="marquee-item">Performance Marketing</span>
+    <span class="marquee-item">Paid Social</span><span class="marquee-item">CAC Optimization</span>
+    <span class="marquee-item">Affiliate Marketing</span><span class="marquee-item">Content Systems</span>
+    <span class="marquee-item">GEO + AEO</span><span class="marquee-item">Personal Branding</span>
+    <span class="marquee-item">Public Relations</span><span class="marquee-item">Experiential</span>
+    <span class="marquee-item">Community</span><span class="marquee-item">Product Studio</span>
+    <span class="marquee-item">Growth Strategy</span><span class="marquee-item">Performance Marketing</span>
+    <span class="marquee-item">Paid Social</span><span class="marquee-item">CAC Optimization</span>
+    <span class="marquee-item">Affiliate Marketing</span><span class="marquee-item">Content Systems</span>
+    <span class="marquee-item">GEO + AEO</span><span class="marquee-item">Personal Branding</span>
+    <span class="marquee-item">Public Relations</span><span class="marquee-item">Experiential</span>
+    <span class="marquee-item">Community</span><span class="marquee-item">Product Studio</span>
+  </div>
+</section>
+
+<section class="dual-section" id="dual">
+  <div class="container">
+    <div class="dual-header fade-up">
+      <div class="section-tag">Two Sides. One Engine.</div>
+      <h2 class="section-title">Client-side consulting meets studio-side building. Choose your track &mdash; or run both.</h2>
+    </div>
+    <div class="dual-grid">
+      <div class="dual-card client fade-up">
+        <div class="dual-card-label">Client Services</div>
+        <h3>The Consultancy</h3>
+        <p>We embed as your fractional growth lead, train your team on the latest performance playbooks, or pinch-hit on a critical launch. B2B or DTC &mdash; the approach is strategy plus execution. Real attribution, real ROAS, real pipeline.</p>
+        <div class="dual-card-services">
+          <span class="service-pill">Growth Strategy</span>
+          <span class="service-pill">Paid Media</span><span class="service-pill">Social Strategy</span>
+          <span class="service-pill">Affiliate</span><span class="service-pill">GEO/AEO</span>
+          <span class="service-pill">Content Marketing</span><span class="service-pill">Public Relations</span>
+          <span class="service-pill">Experiential</span><span class="service-pill">Personal Branding</span>
+          <span class="service-pill">Community</span><span class="service-pill">Team Training</span>
+          <span class="service-pill">Analytics + Attribution</span><span class="service-pill">Email &amp; Lifecycle</span>
+        </div>
+        <a href="#services" class="btn-primary" style="display:inline-flex;">View Capabilities &#8594;</a>
+      </div>
+      <div class="dual-card studio fade-up">
+        <div class="dual-card-label">The Studio &mdash; Skunkworks</div>
+        <h3>Zlato Labs</h3>
+        <p>The build side. Part workshop, part skunkworks &mdash; where marketing know-how meets product thinking. We're actively tinkering with apps, utilities, and tools at the intersection of marketing, AI and culture. Some are close to prime time. Stay tuned.</p>
+        <div class="dual-card-services">
+          <span class="service-pill">AI Tools</span>
+          <span class="service-pill">Marketing Utilities</span><span class="service-pill">Content Platforms</span>
+          <span class="service-pill">MVPs &amp; Prototypes</span><span class="service-pill">Growth Experiments</span>
+        </div>
+        <a href="#contact" class="btn-secondary" style="display:inline-flex;">Studio Inquiries &#8594;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-section">
+  <div class="container">
+    <div class="how-header fade-up">
+      <h2 class="section-title">Three ways to<br>work with Zlato.</h2>
+      <p>Whether you need us for a sprint or a marathon &mdash; or just need your team leveled up &mdash; there's a model that fits.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-card fade-up">
+        <div class="how-card-num">01</div>
+        <h4>Pinch Hit</h4>
+        <p>Your team needs a senior growth operator for a product launch, campaign sprint, or strategic pivot. We come in, execute, and hand off clean. Days to weeks.</p>
+      </div>
+      <div class="how-card fade-up">
+        <div class="how-card-num">02</div>
+        <h4>Embedded</h4>
+        <p>Senior growth lead, embedded with your team for an extended engagement. Building systems, hiring, optimizing CAC, setting attribution &mdash; the full stack.</p>
+      </div>
+      <div class="how-card fade-up">
+        <div class="how-card-num">03</div>
+        <h4>Teach</h4>
+        <p>Workshops, team training and executive coaching. From performance marketing fundamentals to AI in marketing to advanced attribution modeling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="services-header fade-up">
+      <div class="section-tag">Full-Stack Growth Capabilities</div>
+      <h2 class="section-title">Everything your growth engine needs &mdash; strategy through execution.</h2>
+    </div>
+    <div class="services-grid fade-up">
+      <div class="service-item"><h5>Growth Strategy</h5><p>Full-funnel audit, channel mix modeling, go-to-market planning. B2B and DTC.</p></div>
+      <div class="service-item"><h5>Performance Marketing</h5><p>Paid social, SEM, programmatic. CAC-obsessed media buying with ROAS-positive unit economics.</p></div>
+      <div class="service-item"><h5>Social Media Strategy</h5><p>Platform strategy, content calendars, community management. Building audiences that convert.</p></div>
+      <div class="service-item"><h5>Content Marketing</h5><p>Editorial systems, thought leadership, brand storytelling. Organic content that compounds.</p></div>
+      <div class="service-item"><h5>Affiliate Marketing</h5><p>Program architecture, partner recruitment, commission optimization. A real growth lever.</p></div>
+      <div class="service-item"><h5>GEO &amp; AEO</h5><p>Generative engine optimization, AI search visibility, citation strategy. Getting your brand into the AI-generated answer &mdash; not just the link list.</p></div>
+      <div class="service-item"><h5>Public Relations</h5><p>Media strategy, press outreach, narrative development. The publications that move the needle.</p></div>
+      <div class="service-item"><h5>Email &amp; Lifecycle</h5><p>Flows, segmentation, deliverability. Your list as your most profitable owned channel.</p></div>
+      <div class="service-item"><h5>Experiential</h5><p>IRL activations, virtual events, brand experiences. 2,000+ virtual tastings to immersive brand moments.</p></div>
+      <div class="service-item"><h5>Analytics &amp; Attribution</h5><p>Multi-touch attribution, incrementality testing, dashboard builds. Measure it to scale it.</p></div>
+      <div class="service-item"><h5>Personal Branding</h5><p>Executive positioning, founder content strategy, LinkedIn presence. The humans behind the brand.</p></div>
+      <div class="service-item"><h5>Influencer &amp; Partnerships</h5><p>Creator programs, co-marketing, strategic partnerships. Other people's audiences, your growth.</p></div>
+      <div class="service-item"><h5>Community Building</h5><p>Online community strategy, moderation frameworks. Turning customers into evangelists.</p></div>
+      <div class="service-item"><h5>AI &amp; Marketing Tech</h5><p>AI tool implementation, marketing automation, stack optimization. Future-proofing your team.</p></div>
+      <div class="service-item"><h5>eCommerce Growth</h5><p>DTC optimization, conversion rate, marketplace strategy. Shopify to full omnichannel.</p></div>
+      <div class="service-item"><h5>Team Training &amp; Hiring</h5><p>Workshop facilitation, hiring playbooks, capability audits. Scaling the humans, not just spend.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="startup-section" id="startups">
+  <div class="container">
+    <div class="startup-top fade-up">
+      <div>
+        <div class="section-tag">For Founders &amp; Entrepreneurs</div>
+        <h2 class="section-title">Built for startups that move <span class="gradient">fast</span> and break ceilings.</h2>
+        <p>Big brand experience, applied at startup speed. We've bootstrapped our own companies, raised nothing, made millions and learned what works when every dollar counts. Whether you're pre-seed or scaling past $10M ARR &mdash; the playbook adapts but the rigor doesn't.</p>
+        <p style="margin-top: 1rem;">This isn't outsourced strategy from people who've never shipped. It's operator-level work from a team that's built, launched, failed, rebuilt and scaled &mdash; across DTC, SaaS, marketplaces and regulated industries.</p>
+      </div>
+      <div class="startup-right">
+        <div class="startup-stat"><div class="startup-stat-num">$0&#8594;$1M</div><div class="startup-stat-text">Bottles Nation. Bootstrapped. Zero to $1M in 10 months during a pandemic.</div></div>
+        <div class="startup-stat"><div class="startup-stat-num">THC</div><div class="startup-stat-text">Built full growth engine for a THC beverage brand &mdash; regulated, compliant, profitable.</div></div>
+        <div class="startup-stat"><div class="startup-stat-num">AI</div><div class="startup-stat-text">Tinkering with AI-powered marketing tools and utilities. A few close to launch.</div></div>
+      </div>
+    </div>
+    <div class="startup-cards fade-up">
+      <div class="startup-card"><h4>Go-to-Market Sprint</h4><p>You have a product but no growth playbook. In 2&ndash;4 weeks, get a full GTM strategy: channel mix, messaging, funnel architecture, CAC targets and a 90-day execution plan.</p><span class="price-tag">2&ndash;4 week engagement</span></div>
+      <div class="startup-card"><h4>Fractional Growth Lead</h4><p>Need senior growth leadership without a full-time hire? We embed part-time as your growth operator &mdash; setting strategy, running campaigns, mentoring your team.</p><span class="price-tag">Ongoing monthly retainer</span></div>
+      <div class="startup-card"><h4>Founder Marketing Bootcamp</h4><p>Hands-on training for founders who need to be their own growth team. Personal branding, paid fundamentals, content strategy, analytics setup.</p><span class="price-tag">Workshop or multi-session</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cred-section">
+  <div class="container">
+    <div class="cred-header fade-up">
+      <div class="section-tag">The Receipts</div>
+      <h2 class="section-title">Brands, agencies &amp; orgs.</h2>
+    </div>
+    <div class="cred-grid fade-up">
+      <span class="cred-item">Orbitz</span><span class="cred-item">Edelman</span><span class="cred-item">Motorola</span>
+      <span class="cred-item">Target</span><span class="cred-item">Leo Burnett</span><span class="cred-item">Drink Delta</span>
+      <span class="cred-item">The Escape Pod</span><span class="cred-item">ModSquad</span><span class="cred-item">Bottles Nation</span>
+      <span class="cred-item">JEB Commerce</span><span class="cred-item">Fashion Fair</span><span class="cred-item">Choose Chicago</span>
+      <span class="cred-item">NBC Chicago</span><span class="cred-item">Google</span><span class="cred-item">Twitter</span><span class="cred-item">Accenture</span>
+    </div>
+  </div>
+</section>
+
+<section class="gold-section">
+  <div class="container gold-content fade-up">
+    <div class="gold-word">&#1047;&#1083;&#1072;&#1090;&#1086;</div>
+    <div class="gold-meaning">zlato / noun / Macedonian</div>
+    <p class="gold-desc">Gold. It's how we treat every client, every project, every line of code. Whether it's a Fortune 100 brand or a two-person startup &mdash; the standard is gold.</p>
+  </div>
+</section>
+
+<section class="testimonials-section">
+  <div class="container">
+    <div class="testimonials-header fade-up">
+      <div class="section-tag">What They Say</div>
+      <h2 class="section-title">Words from people we've worked with.</h2>
+    </div>
+    <div class="testimonials-grid fade-up">
+      <div class="testimonial-card">
+        <p class="testimonial-quote">A standout moment was when Zlato executed a LinkedIn digital media campaign which increased awareness and generated increased sales opportunities. Beyond the vast knowledge of digital media and marketing, Zlato was a collaborative entity, trusted as an extension of our enterprise.</p>
+        <div class="testimonial-author"><strong>First Last</strong> &middot; Title, Company</div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">Placeholder for testimonial. Add a second quote from a client, collaborator, or colleague here.</p>
+        <div class="testimonial-author"><strong>First Last</strong> &middot; Title, Company</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="fade-up">
+        <img src="bb-53.jpg" alt="Blagica Bottigliero" class="about-photo">
+        <div class="about-photo-caption">Blagica Bottigliero &middot; Founder, Zlato</div>
+      </div>
+      <div class="about-right-col fade-up">
+        <div class="section-tag">About</div>
+        <h2 class="section-title">Led by Blagica Bottigliero.</h2>
+        <p><strong>25 years building the internet. Still building.</strong></p>
+        <p>From the early days of digital at Leo Burnett to founding member of Orbitz's eMarketing team. From leading Edelman Digital's strategy division to running global social at Motorola. From co-founding Bottles Nation to scaling growth for a THC beverage brand. Corporate side, agency side, startup side &mdash; all of it.</p>
+        <p><strong>Emmy winner. Speaker at SXSW, TEDx, and 30+ conferences.</strong> Based in Metro Detroit. Macedonian roots. Builds things that work.</p>
+        <div class="about-badges">
+          <span class="badge">Emmy Winner</span><span class="badge">Orbitz Founding Team</span>
+          <span class="badge">Edelman Digital</span><span class="badge">Motorola Global</span>
+          <span class="badge">Target</span><span class="badge">DTC Builder</span>
+          <span class="badge">SXSW Speaker</span><span class="badge">TEDx Speaker</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-cards fade-up">
+      <div class="about-card"><div class="about-card-title">Brand Side</div><div class="about-card-desc">Orbitz, Motorola Mobility, Target. Building digital from the inside.</div></div>
+      <div class="about-card"><div class="about-card-title">Agency Side</div><div class="about-card-desc">Leo Burnett/Giant Step, Edelman Digital, The Escape Pod. Strategy that scales.</div></div>
+      <div class="about-card"><div class="about-card-title">Founder Side</div><div class="about-card-desc">Bottles Nation, self-funded startups, Zlato Labs. Bootstrapped and battle-tested.</div></div>
+      <div class="about-card"><div class="about-card-title">Emerging &amp; Regulated</div><div class="about-card-desc">THC beverages, compliance marketing, new category launches.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="container cta-content fade-up">
+    <h2>Ready to talk <span class="gradient">growth?</span></h2>
+    <p>Whether you're a Fortune 100 brand, a startup with a Notion doc for a marketing plan, or an agency that needs backup &mdash; let's figure it out.</p>
+    <div class="cta-btns">
+      <a href="mailto:blagica@zlato.co" class="btn-primary">blagica@zlato.co &#8594;</a>
+      <a href="https://calendly.com/blagica-bottigliero/chat" target="_blank" rel="noopener" class="btn-secondary">Book a Call</a>
+    </div>
+    <div class="cta-meta">312.890.2564 &middot; Detroit &middot; Chicago &middot; Everywhere</div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left"><img src="zlatoLogo.png" alt="Zlato"></div>
+      <div class="footer-center">&copy; 2025 Zlato. Strategy + Studio.</div>
+      <div class="footer-right">
+        <a href="https://blagica.com" target="_blank" rel="noopener">Blagica.com</a>
+        <a href="https://www.linkedin.com/in/blagicabottigliero/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('cli
