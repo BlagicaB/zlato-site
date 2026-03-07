@@ -580,4 +580,13 @@ document.addEventListener('DOMContentLoaded', function() {
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
   document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
   document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-    a.addEventListener('cli
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+});
+</script>
+</body>
+</html>
