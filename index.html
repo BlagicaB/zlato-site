@@ -165,6 +165,15 @@ nav {
 .service-pill { padding: 0.3rem 0.7rem; border-radius: 2px; font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.08em; }
 .dual-card.client .service-pill { background: rgba(232,169,23,0.06); color: var(--orange); border: 1px solid rgba(232,169,23,0.15); }
 .dual-card.studio .service-pill { background: #F3F2EF; color: var(--text-light); border: 1px solid var(--border); }
+.lab-projects { display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
+.lab-project { display: block; text-decoration: none; border: 1px solid var(--border); padding: 1.1rem 1.25rem; transition: all 0.3s; }
+.lab-project:hover { border-color: var(--black); background: #FAFAF8; }
+.lab-project-head { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.4rem; }
+.lab-project-name { font-family: var(--font-serif); font-size: 1.2rem; color: var(--black); }
+.lab-project-arrow { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-light); transition: color 0.3s; }
+.lab-project:hover .lab-project-arrow { color: var(--orange); }
+.lab-project-url { margin-left: auto; font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-lighter); }
+.lab-project p { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; font-weight: 300; margin-bottom: 0 !important; }
 
 /* HOW */
 .how-section { padding: 6rem 0 7rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -387,11 +396,24 @@ footer { padding: 2.5rem 0; border-top: 1px solid var(--border); }
       <div class="dual-card studio fade-up">
         <div class="dual-card-label">The Studio &mdash; Skunkworks</div>
         <h3>Zlato Labs</h3>
-        <p>The build side. Part workshop, part skunkworks &mdash; where marketing know-how meets product thinking. We're actively tinkering with apps, utilities, and tools at the intersection of marketing, AI and culture. Some are close to prime time. Stay tuned.</p>
-        <div class="dual-card-services">
-          <span class="service-pill">AI Tools</span>
-          <span class="service-pill">Marketing Utilities</span><span class="service-pill">Content Platforms</span>
-          <span class="service-pill">MVPs &amp; Prototypes</span><span class="service-pill">Growth Experiments</span>
+        <p>The build side. Part workshop, part skunkworks &mdash; where marketing know-how meets product thinking. We ship apps, utilities, and tools at the intersection of marketing, AI and culture &mdash; some for ourselves, some for the people who need them. Two that are live right now:</p>
+        <div class="lab-projects">
+          <a class="lab-project" href="https://www.svehlife.com" target="_blank" rel="noopener">
+            <div class="lab-project-head">
+              <span class="lab-project-name">sveh</span>
+              <span class="lab-project-arrow">&#8594;</span>
+              <span class="lab-project-url">svehlife.com</span>
+            </div>
+            <p>A private life organizer that pulls health, family, money, household and career into one dashboard &mdash; built for whoever in the house is carrying the mental load. <em>Sveh</em> is Macedonian for &ldquo;everything.&rdquo;</p>
+          </a>
+          <a class="lab-project" href="https://findability.zlato.co" target="_blank" rel="noopener">
+            <div class="lab-project-head">
+              <span class="lab-project-name">Zlato Findability Tool</span>
+              <span class="lab-project-arrow">&#8594;</span>
+              <span class="lab-project-url">findability.zlato.co</span>
+            </div>
+            <p>A free scorecard that tells a small business how findable it is across Google, AI answers and local search &mdash; then ranks the fixes by priority. Score in about 15 seconds, no login.</p>
+          </a>
         </div>
         <a href="#contact" class="btn-secondary" style="display:inline-flex;">Studio Inquiries &#8594;</a>
       </div>
