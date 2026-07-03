@@ -132,6 +132,9 @@ nav {
 .nav-links a { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); text-decoration: none; transition: color 0.3s; }
 .nav-links a:hover { color: var(--orange); }
 .nav-cta { background: var(--black) !important; color: var(--white) !important; padding: 0.5rem 1.25rem !important; border-radius: 2px; font-weight: 700 !important; }
+.nav-findable { background: var(--gradient) !important; color: var(--white) !important; padding: 0.5rem 1.25rem !important; border-radius: 2px; font-weight: 700 !important; }
+.nav-findable:hover { filter: brightness(1.08); color: var(--white) !important; }
+.mobile-nav .mobile-findable { color: var(--orange); font-weight: 700; }
 .nav-cta:hover { background: var(--dark) !important; }
 .mobile-toggle { display: none; background: none; border: none; color: var(--black); font-size: 1.5rem; cursor: pointer; }
 
@@ -432,7 +435,7 @@ footer { padding: 2.5rem 0; border-top: 1px solid var(--border); }
     <a href="#startups">Startups</a>
     <a href="#about">About</a>
     <a href="#faq">FAQ</a>
-    <a href="https://findability.zlato.co" target="_blank" rel="noopener">Are you findable?</a>
+    <a href="https://findability.zlato.co" target="_blank" rel="noopener" class="nav-findable">Are you findable?</a>
     <a href="#contact" class="nav-cta">Let's Talk &#8594;</a>
   </div>
   <button class="mobile-toggle" onclick="document.querySelector('.mobile-nav').classList.add('active')" aria-label="Open menu">&#9776;</button>
@@ -445,7 +448,7 @@ footer { padding: 2.5rem 0; border-top: 1px solid var(--border); }
   <a href="#startups" onclick="this.parentElement.classList.remove('active')">Startups</a>
   <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
   <a href="#faq" onclick="this.parentElement.classList.remove('active')">FAQ</a>
-  <a href="https://findability.zlato.co" target="_blank" rel="noopener" onclick="this.parentElement.classList.remove('active')">Are you findable?</a>
+  <a href="https://findability.zlato.co" target="_blank" rel="noopener" class="mobile-findable" onclick="this.parentElement.classList.remove('active')">Are you findable?</a>
   <a href="#contact" onclick="this.parentElement.classList.remove('active')">Let's Talk</a>
 </div>
 
