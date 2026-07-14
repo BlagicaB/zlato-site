@@ -94,7 +94,7 @@ footer{margin-top:14px;font-size:12px;color:#8a7c66;text-align:center}
     </div>
 <div class="bar">
   <button class="btn" onclick="copyApprovals()">📋 Copy my approvals</button>
-  <button class="btn ghost" onclick="emailApprovals()">📧 Email via Gmail</button>
+  <a id="emailBtn" class="btn ghost" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=blagica@zlato.co" target="_blank" rel="noopener" style="display:inline-block;text-decoration:none;line-height:1">📧 Email via Gmail</a>
   <span id="flash" class="flash" role="status"></span>
 </div>
 <p style="text-align:center;font-size:12px;color:#8a7c66;margin:6px 0 0">Copy &amp; paste your notes anywhere, or open a pre-filled email — whichever you prefer.</p>
@@ -128,10 +128,13 @@ footer{margin-top:14px;font-size:12px;color:#8a7c66;text-align:center}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){flash('Copied — paste it into an email or text to Blagica.');},function(){legacyCopy(t);});}
     else{legacyCopy(t);}
   };
-  window.emailApprovals=function(){
-    var url='https://mail.google.com/mail/?view=cm&fs=1&to=blagica@zlato.co&su='+encodeURIComponent('Up On A Hill — Week 1 content approvals')+'&body='+encodeURIComponent(buildBody());
-    window.open(url,'_blank');
-  };
+  function emailHref(){
+    return 'https://mail.google.com/mail/?view=cm&fs=1&to=blagica@zlato.co&su='+encodeURIComponent('Up On A Hill — Week 1 content approvals')+'&body='+encodeURIComponent(buildBody());
+  }
+  function updateEmailHref(){var a=document.getElementById('emailBtn');if(a)a.href=emailHref();}
+  document.addEventListener('input',updateEmailHref);
+  document.addEventListener('change',updateEmailHref);
+  (function(){var a=document.getElementById('emailBtn');if(a){a.addEventListener('mousedown',updateEmailHref);a.addEventListener('touchstart',updateEmailHref);}updateEmailHref();})();
 })();
 </script>
 </body></html>
