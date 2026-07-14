@@ -94,7 +94,7 @@ footer{margin-top:14px;font-size:12px;color:#8a7c66;text-align:center}
     </div>
 <div class="bar">
   <button class="btn" onclick="copyApprovals()">📋 Copy my approvals</button>
-  <button class="btn ghost" onclick="emailApprovals()">📧 Email to Blagica</button>
+  <button class="btn ghost" onclick="emailApprovals()">📧 Email via Gmail</button>
   <span id="flash" class="flash" role="status"></span>
 </div>
 <p style="text-align:center;font-size:12px;color:#8a7c66;margin:6px 0 0">Copy &amp; paste your notes anywhere, or open a pre-filled email — whichever you prefer.</p>
@@ -129,8 +129,8 @@ footer{margin-top:14px;font-size:12px;color:#8a7c66;text-align:center}
     else{legacyCopy(t);}
   };
   window.emailApprovals=function(){
-    var url='mailto:blagica@zlato.co?subject='+encodeURIComponent('Up On A Hill — Week 1 content approvals')+'&body='+encodeURIComponent(buildBody());
-    window.location.href=url;
+    var url='https://mail.google.com/mail/?view=cm&fs=1&to=blagica@zlato.co&su='+encodeURIComponent('Up On A Hill — Week 1 content approvals')+'&body='+encodeURIComponent(buildBody());
+    window.open(url,'_blank');
   };
 })();
 </script>
