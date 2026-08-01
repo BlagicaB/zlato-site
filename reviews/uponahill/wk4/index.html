@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Up On A Hill — Week 4 Content &amp; Facebook Events for Review</title>
+<style>
+  :root{
+    --cream:#FBF7EF;
+    --teal:#099494;
+    --teal-dk:#066E6E;
+    --gold:#F19A2F;
+    --ink:#22201C;
+    --muted:#6B6660;
+    --line:#E7DFD2;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px 80px}
+
+  header.top{padding:44px 0 10px}
+  .eyebrow{
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--teal);font-weight:700;margin:0 0 10px
+  }
+  h1{font-size:38px;line-height:1.15;margin:0 0 8px;letter-spacing:-.02em}
+  .sub{font-size:18px;color:var(--muted);margin:0 0 4px}
+  .tagline{font-size:15px;color:var(--gold);font-weight:600;letter-spacing:.02em;margin:10px 0 0}
+
+  .instructions{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin:26px 0 34px
+  }
+  .instructions h2{font-size:15px;margin:0 0 10px;letter-spacing:.04em;text-transform:uppercase;color:var(--teal)}
+  .instructions p{margin:0 0 8px;font-size:15px}
+  .instructions p:last-child{margin-bottom:0}
+  .instructions strong{color:var(--ink)}
+
+  .sectionhead{
+    display:flex;align-items:baseline;gap:14px;
+    margin:44px 0 6px;padding-top:14px;border-top:2px solid var(--line)
+  }
+  .sectionhead h2{font-size:24px;margin:0;letter-spacing:-.01em}
+  .sectionhead span{font-size:13px;color:var(--muted)}
+  .sectionnote{font-size:15px;color:var(--muted);margin:0 0 22px;max-width:72ch}
+
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:26px 28px;margin:0 0 22px
+  }
+  .card-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:6px}
+  .pill{
+    font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px
+  }
+  .pill.date{background:var(--teal);color:#fff}
+  .pill.theme{background:#FDF0DC;color:#9A5F0B}
+  .pill.plat{background:#EDF6F6;color:var(--teal-dk)}
+  .pill.new{background:var(--gold);color:#fff}
+  .card h3{font-size:22px;margin:8px 0 4px;letter-spacing:-.01em}
+  .card .angle{font-size:15px;color:var(--muted);margin:0 0 18px;max-width:74ch}
+
+  .copyblock{
+    border-left:3px solid var(--line);padding:2px 0 2px 18px;margin:0 0 20px
+  }
+  .copyblock.fb{border-left-color:var(--teal)}
+  .copyblock.ig{border-left-color:var(--gold)}
+  .copyblock h4{
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    margin:0 0 8px;color:var(--muted);font-weight:700
+  }
+  .copyblock p{margin:0 0 10px;font-size:16px;white-space:pre-line}
+  .copyblock p:last-child{margin-bottom:0}
+  .tags{font-size:14px;color:var(--teal-dk);word-spacing:.1em}
+
+  .meta{
+    background:#FAF8F4;border:1px solid var(--line);border-radius:10px;
+    padding:14px 16px;margin:0 0 18px;font-size:14px;color:var(--muted)
+  }
+  .meta strong{color:var(--ink);font-weight:600}
+  .meta div{margin-bottom:5px}
+  .meta div:last-child{margin-bottom:0}
+
+  .approve{
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+    border-top:1px solid var(--line);padding-top:16px
+  }
+  .approve .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-right:4px}
+  .btn{
+    border:1.5px solid var(--line);background:#fff;border-radius:999px;
+    padding:8px 16px;font-size:15px;cursor:pointer;font-family:inherit;color:var(--ink);
+    transition:.12s
+  }
+  .btn:hover{border-color:var(--teal)}
+  .btn[aria-pressed="true"].yes{background:var(--teal);border-color:var(--teal);color:#fff}
+  .btn[aria-pressed="true"].edit{background:var(--gold);border-color:var(--gold);color:#fff}
+  textarea.note{
+    width:100%;margin-top:12px;border:1px solid var(--line);border-radius:10px;
+    padding:11px 13px;font-family:inherit;font-size:15px;resize:vertical;min-height:44px;
+    background:#FEFDFB;color:var(--ink)
+  }
+  textarea.note:focus{outline:2px solid var(--teal);outline-offset:1px}
+
+  .flag{
+    background:#FFF6E8;border:1px solid #F3D9AE;border-left:4px solid var(--gold);
+    border-radius:10px;padding:16px 18px;margin:0 0 22px;font-size:15px
+  }
+  .flag h4{margin:0 0 8px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#9A5F0B}
+  .flag ul{margin:0;padding-left:20px}
+  .flag li{margin-bottom:7px}
+  .flag li:last-child{margin-bottom:0}
+
+  .actions{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:24px 26px;margin:36px 0 0;text-align:center
+  }
+  .actions h2{font-size:20px;margin:0 0 6px}
+  .actions p{margin:0 0 16px;color:var(--muted);font-size:15px}
+  .bigbtn{
+    display:inline-block;background:var(--teal);color:#fff;border:none;border-radius:999px;
+    padding:13px 26px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;
+    text-decoration:none;margin:0 6px 10px
+  }
+  .bigbtn.alt{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+  .bigbtn:hover{opacity:.9}
+  #copied{font-size:14px;color:var(--teal);min-height:20px;margin-top:4px}
+
+  footer{
+    margin-top:46px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:14px;color:var(--muted);text-align:center
+  }
+  footer a{color:var(--teal)}
+
+  @media(max-width:640px){
+    h1{font-size:29px}
+    .card{padding:20px}
+    .wrap{padding:0 16px 60px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Up On A Hill · Content for Review</p>
+  <h1>Week 4 — plus three Facebook Events</h1>
+  <p class="sub">Facebook &amp; Instagram · August 3–9, 2026</p>
+  <p class="tagline">Theme: Pick Your Night. Music. Place. Purpose.</p>
+</header>
+
+<div class="instructions">
+  <h2>How to review this</h2>
+  <p>For each item below, tap <strong>👍 Approve</strong> or <strong>✏️ Change</strong>. If you tap Change, type what you'd like different in the box — a sentence is plenty.</p>
+  <p>Your answers save as you go, so you can close this and come back. When you're done, hit <strong>Copy all feedback</strong> at the bottom and text or email it to me. Nothing here is published yet.</p>
+  <p>New this week: the three <strong>Facebook Events</strong> are at the bottom. Once you approve those, they go live and people can hit "Interested" — which is free reach every time they do it.</p>
+</div>
+
+<div class="sectionhead">
+  <h2>The four posts</h2><span>Mon · Wed · Fri · Sun</span>
+</div>
+<p class="sectionnote">Last week was the three nonprofits and why Erik Hall does this. This week turns attention to the calendar: the events go live Monday, then we give people a reason to care about a specific night rather than the series in general.</p>
+
+<!-- POST 1 -->
+<div class="card">
+  <div class="card-top">
+    <span class="pill date">Mon · Aug 3</span>
+    <span class="pill theme">Events go live</span>
+    <span class="pill plat">Facebook + Instagram</span>
+  </div>
+  <h3>Three nights. Pick yours.</h3>
+  <p class="angle">The RSVP ask. One "Interested" click puts Up On A Hill into that person's feed for the next four weeks, free, and shows their friends they're going. This is the single cheapest reach we have available.</p>
+
+  <div class="copyblock fb">
+    <h4>Facebook</h4>
+    <p>Three nights on the hill. You don't have to come to all of them — but you should pick one.
+
+September 2 — Elizabeth Moen. Iowa-raised, Chicago-based, a voice that Paste Magazine said "towers over the listener."
+
+September 16 — Big Sadie. Chicago's own roots band. Upright bass, close harmony, and songs that sound like they've been around a hundred years.
+
+September 30 — Liam Kazar. Folk, soul and classic pop from a songwriter who's spent a decade in Jeff Tweedy's band.
+
+Gates at 4. DJ Quin Kirchner spinning records at 4:30. Music at 6. Two hundred people a night, on an 18-acre private estate in New Buffalo, just over an hour from Chicago.
+
+General admission is $35. Reserved seating is $75. You can come to one night or all three.
+
+Three separate events are now up on this page — hit "Interested" on the one you want and we'll keep you posted on that night specifically.
+
+Tickets and details: uponahill.org</p>
+  </div>
+
+  <div class="copyblock ig">
+    <h4>Instagram</h4>
+    <p>Three nights. Pick yours. 🎟️
+
+Sept 2 — @elizabethmoenmusic
+Sept 16 — @bigsadiemusic
+Sept 30 — @liamkazar
+
+Gates 4pm · DJ @quinkirchner at 4:30 · music at 6.
+$35 general admission · $75 reserved seating
+200 people a night. 18 acres. An hour from Chicago.
+
+Every ticket supports three Southwest Michigan nonprofits.
+
+Link in bio 🌾</p>
+    <p class="tags">#UpOnAHill #HarborCountry #NewBuffaloMI #ThreeOaks #UnionPier #SouthwestMichigan #PureMichigan #LiveMusic #Americana #IndieFolk #ChicagoMusic #MichiganMusic #MusicPlacePurpose</p>
+  </div>
+
+  <div class="meta">
+    <div><strong>Visual:</strong> Three-up carousel — one artist photo per slide, each captioned with the date. Slide 4: the stage/property shot (festivalstageV3) with "Pick your night" over it. On Facebook, post as a single image with the three events linked in the first comment.</div>
+    <div><strong>Timing:</strong> Monday 6:30pm ET — highest engagement window we've seen on both accounts.</div>
+    <div><strong>Do also:</strong> Share into Harbor Country, New Buffalo, Three Oaks and Sawyer groups from a personal profile, not the Page.</div>
+  </div>
+
+  <div class="approve">
+    <span class="lbl">Your call</span>
+    <button class="btn yes" data-item="p1" data-val="approve" aria-pressed="false">👍 Approve</button>
+    <button class="btn edit" data-item="p1" data-val="change" aria-pressed="false">✏️ Change something</button>
+  </div>
+  <textarea class="note" data-item="p1" placeholder="Notes on this post…"></textarea>
+</div>
+
+<!-- POST 2 -->
+<div class="card">
+  <div class="card-top">
+    <span class="pill date">Wed · Aug 5</span>
+    <span class="pill theme">Artist · Fun fact</span>
+    <span class="pill plat">Facebook + Instagram</span>
+  </div>
+  <h3>Elizabeth Moen didn't play her first open mic until she was 20</h3>
+  <p class="angle">Artist posts perform, but only when there's a hook. "Acclaimed singer-songwriter" is wallpaper. "She was a French and Spanish major who taught herself guitar and didn't get on a stage until senior year" is a story. Tag her so it has a chance of being reshared — that's what took the July 26 Liam Kazar post to 2,800 views.</p>
+
+  <div class="copyblock fb">
+    <h4>Facebook</h4>
+    <p>Elizabeth Moen opens Up On A Hill on September 2 — and she got a very late start.
+
+She taught herself guitar as a teenager in small-town Iowa but didn't play her first open mic until she was 20, as a French and Spanish major at the University of Iowa, at a bar in Iowa City called The Mill. She'd just written her first song.
+
+Nine years later she's toured Europe singing in Kevin Morby's band, shared stages with Brittany Howard, Hozier and Ani DiFranco, and had NPR say she "has remarkable control over her voice that reflects the emotional candor in her lyrics."
+
+Her new record was produced by Spencer Tweedy. She's releasing it herself.
+
+She describes what she does as indie rock grit through the warmth of Midwestern folk. In a tent on a hill at sunset, with 200 people, that's going to be something.
+
+September 2. Gates at 4. Tickets at uponahill.org</p>
+  </div>
+
+  <div class="copyblock ig">
+    <h4>Instagram</h4>
+    <p>She didn't play her first open mic until she was 20.
+
+@elizabethmoenmusic taught herself guitar in small-town Iowa, wrote her first song as a French and Spanish major, and walked into a bar in Iowa City to play it.
+
+Since then: touring Europe with Kevin Morby, stages shared with Brittany Howard, Hozier and Ani DiFranco, and a new record produced by Spencer Tweedy.
+
+Paste said her voice "towers over the listener." 🎤
+
+She opens Up On A Hill — September 2. Gates 4pm.
+
+Link in bio.</p>
+    <p class="tags">#ElizabethMoen #UpOnAHill #IndieFolk #SingerSongwriter #HarborCountry #NewBuffaloMI #ChicagoMusic #MichiganMusic #LiveMusic #SouthwestMichigan #MusicPlacePurpose</p>
+  </div>
+
+  <div class="meta">
+    <div><strong>Visual:</strong> Elizabeth_Moen_by_Emilio_Herce.jpeg. Credit "Photo: Emilio Herce" in the caption tail on Instagram and in the alt text on both.</div>
+    <div><strong>Tag:</strong> @elizabethmoenmusic on IG. Try Collab post — if she accepts, this lands in her followers' feeds as her own post.</div>
+    <div><strong>Ask:</strong> DM her the post and ask for a story reshare. That single ask is worth more than any boost we can buy.</div>
+  </div>
+
+  <div class="approve">
+    <span class="lbl">Your call</span>
+    <button class="btn yes" data-item="p2" data-val="approve" aria-pressed="false">👍 Approve</button>
+    <button class="btn edit" data-item="p2" data-val="change" aria-pressed="false">✏️ Change something</button>
+  </div>
+  <textarea class="note" data-item="p2" placeholder="Notes on this post…"></textarea>
+</div>
+
+<!-- POST 3 -->
+<div class="card">
+  <div class="card-top">
+    <span class="pill date">Fri · Aug 7</span>
+    <span class="pill theme">Know before you go</span>
+    <span class="pill plat">Facebook + Instagram</span>
+  </div>
+  <h3>How a night on the hill actually works</h3>
+  <p class="angle">The most common reason people don't buy a ticket to a first-year event is that they can't picture it. This post answers the eight questions everyone is quietly asking — and it's the one we'll pin, boost, and reuse in every group share from here to September.</p>
+
+  <div class="copyblock fb">
+    <h4>Facebook</h4>
+    <p>People keep asking us the same handful of questions, so — here's the whole evening.
+
+<strong>4:00</strong> — Gates open. Park on site, free. Come early; the light on the hill at five is the reason this event exists.
+
+<strong>4:30</strong> — DJ Quin Kirchner starts. He's a Chicago jazz drummer with a serious record collection, and he plays it all from vinyl.
+
+<strong>6:00</strong> — The music starts. One artist, one set, under a tent.
+
+Food and drinks are for sale all evening, including beer and wine for guests 21 and over with ID. Leave the cooler at home — no outside food or drink.
+
+All ages are welcome. Accessible parking is available; call ahead and we'll take care of you. Only service animals, please. Rain or shine — the music's under a tent either way.
+
+Tickets are $35 general admission and $75 reserved seating. Come to one night or all three.
+
+Two hundred people a night. That's the whole point.
+
+September 2, 16 and 30 at Apple Blossom Resort in New Buffalo — a private 18-acre estate, just over an hour from downtown Chicago.
+
+Every ticket supports Neighbor by Neighbor, the New Buffalo Community Education Foundation and the Dune Coast Cares Foundation.
+
+uponahill.org</p>
+  </div>
+
+  <div class="copyblock ig">
+    <h4>Instagram</h4>
+    <p>Know before you go 🌾
+
+4:00 — gates open, parking's free
+4:30 — @quinkirchner spinning vinyl
+6:00 — the music starts
+
+☑️ Food + drinks for sale all evening
+☑️ Beer &amp; wine, 21+ with ID
+☑️ All ages welcome
+☑️ Rain or shine — it's under a tent
+☑️ Accessible parking, just call ahead
+✖️ No outside food or drink
+✖️ Service animals only
+
+$35 general admission · $75 reserved seating
+200 people a night. 18 acres. An hour from Chicago.
+
+Sept 2 · Sept 16 · Sept 30 — link in bio.</p>
+    <p class="tags">#UpOnAHill #KnowBeforeYouGo #HarborCountry #NewBuffaloMI #UnionPier #ThreeOaks #SouthwestMichigan #PureMichigan #LiveMusic #ChicagoWeekend #MusicPlacePurpose</p>
+  </div>
+
+  <div class="meta">
+    <div><strong>Visual:</strong> Property/stage photography — festivalstageV3 or the golden-hour estate shots. On Instagram, run it as a 5-slide carousel (one timing per slide) so it earns swipes.</div>
+    <div><strong>Then:</strong> Pin this to the top of the Facebook Page and paste it into all three Facebook Event descriptions as a comment.</div>
+    <div><strong>Boost:</strong> This is the one to put money behind — $40 to Southwest Michigan, 35+, interests in live music and Americana.</div>
+    <div><strong>On the two ticket levels:</strong> price is stated, what each one gets you is deliberately left open for now. Someone will ask in the comments — the holding answer is "Reserved seating gets you a held seat for the performance; general admission is open seating. Full details are on the ticket page at uponahill.org." That's true, it doesn't promise anything, and it moves them to the ticket page. I'll write the real answer into all three events the moment it's settled.</div>
+  </div>
+
+  <div class="approve">
+    <span class="lbl">Your call</span>
+    <button class="btn yes" data-item="p3" data-val="approve" aria-pressed="false">👍 Approve</button>
+    <button class="btn edit" data-item="p3" data-val="change" aria-pressed="false">✏️ Change something</button>
+  </div>
+  <textarea class="note" data-item="p3" placeholder="Notes on this post…"></textarea>
+</div>
+
+<!-- POST 4 -->
+<div class="card">
+  <div class="card-top">
+    <span class="pill date">Sun · Aug 9</span>
+    <span class="pill theme">Music · The why</span>
+    <span class="pill plat">Facebook + Instagram</span>
+  </div>
+  <h3>This lineup is not a coincidence</h3>
+  <p class="angle">The strongest thing about the bill is that these people already know each other. It proves Erik Hall curated rather than booked — and it tags five accounts at once, which is five chances at the kind of reshare that carried the Liam Kazar post to 2,800 views.</p>
+
+  <div class="copyblock fb">
+    <h4>Facebook</h4>
+    <p>Look closely at this lineup and you'll notice it's less a bill than a circle of friends.
+
+Quin Kirchner — the DJ who opens all three nights — has played drums in Erik Hall's bands. Erik is the musician who curated this festival, and the one who recorded Steve Reich's "Music for 18 Musicians" by himself, in his own home studio, playing every single part by hand. Steve Reich told him he'd reinvented the piece.
+
+Spencer Tweedy produced Elizabeth Moen's new record. He also played drums on Liam Kazar's.
+
+Liam has been in Jeff Tweedy's band for over a decade. Big Sadie has been playing Chicago rooms since 2014, and one of them teaches fiddle at the Old Town School of Folk Music.
+
+This is what it looks like when a musician books a festival instead of an agent. Everyone on this hill in September has played on someone else's record.
+
+September 2, 16 and 30. Apple Blossom Resort. uponahill.org</p>
+  </div>
+
+  <div class="copyblock ig">
+    <h4>Instagram</h4>
+    <p>This lineup isn't a coincidence. 🧵
+
+@quinkirchner — our DJ all three nights — has played drums in @intallbuildings, the solo project of Erik Hall, who curated this whole thing.
+
+Spencer Tweedy produced @elizabethmoenmusic's new record. He also drummed on @liamkazar's.
+
+Liam's been in Jeff Tweedy's band for over ten years.
+
+@bigsadiemusic have been playing Chicago rooms since 2014.
+
+Everyone on this hill in September has played on someone else's record. That's what happens when a musician curates a festival instead of an agent.
+
+Sept 2 · 16 · 30 — link in bio 🌾</p>
+    <p class="tags">#UpOnAHill #ErikHall #InTallBuildings #QuinKirchner #ElizabethMoen #BigSadie #LiamKazar #ChicagoMusic #MichiganMusic #Americana #IndieFolk #HarborCountry #MusicPlacePurpose</p>
+  </div>
+
+  <div class="meta">
+    <div><strong>Visual:</strong> Simple typographic graphic — five names connected by hairlines, in teal and gold on cream. Reads as a diagram; stops the scroll because it doesn't look like a concert poster.</div>
+    <div><strong>Tag:</strong> All five accounts. This is the highest-reshare-probability post of the week.</div>
+    <div><strong>Note:</strong> Erik Hall's own Instagram is under his project name, @intallbuildings.</div>
+  </div>
+
+  <div class="approve">
+    <span class="lbl">Your call</span>
+    <button class="btn yes" data-item="p4" data-val="approve" aria-pressed="false">👍 Approve</button>
+    <button class="btn edit" data-item="p4" data-val="change" aria-pressed="false">✏️ Change something</button>
+  </div>
+  <textarea class="note" data-item="p4" placeholder="Notes on this post…"></textarea>
+</div>
+
+<!-- EVENTS -->
+<div class="sectionhead">
+  <h2>The three Facebook Events</h2><span>Live once you approve</span>
+</div>
+<p class="sectionnote">One event per night, each co-hosted by Neighbor by Neighbor, the New Buffalo Community Education Foundation and the Dune Coast Cares Foundation so it appears natively to all four audiences. Every "Interested" click is free recurring reach — Facebook reminds that person as the date approaches, and shows their friends they're going. Same skeleton on all three; the artist section is what changes.</p>
+
+<!-- EVENT 1 -->
+<div class="card">
+  <div class="card-top">
+    <span class="pill new">Event 1</span>
+    <span class="pill date">Wed · Sept 2</span>
+    <span class="pill theme">Elizabeth Moen</span>
+  </div>
+  <h3>Up On A Hill: Elizabeth Moen</h3>
+  <p class="angle">Facebook Event name field — keep the series name first so all three sort together on the Page.</p>
+
+  <div class="copyblock fb">
+    <h4>Event description</h4>
+    <p>The first night of Up On A Hill — three evenings of music on a private hillside in Harbor Country, with every ticket supporting three Southwest Michigan nonprofits.
+
+<strong>THE ARTIST</strong>
+Elizabeth Moen is an Iowa-raised, Chicago-based songwriter whose music runs on indie rock grit and Midwestern folk warmth — big, unguarded songs carried by one of the more remarkable voices working right now. Paste Magazine put it plainly: her voice "towers over the listener."
+
+Here's the part we like: she taught herself guitar as a teenager and didn't play her first open mic until she was 20, as a French and Spanish major at the University of Iowa. Since then she's sung in Kevin Morby's touring band across the US and Europe, played guitar for Squirrel Flower, shared stages with Brittany Howard, Hozier, Lucy Dacus and Ani DiFranco, and been named to NPR Music's Austin 100. Her new record is produced by Spencer Tweedy — and she's releasing it herself.
+
+<strong>THE EVENING</strong>
+4:00 pm — Gates open. Free parking on site.
+4:30 pm — DJ Quin Kirchner, a Chicago jazz drummer playing deep cuts off his own vinyl.
+6:00 pm — Elizabeth Moen.
+
+<strong>THE PLACE</strong>
+Apple Blossom Resort in New Buffalo, Michigan — a private 18-acre estate in the heart of Harbor Country, just over an hour from downtown Chicago and minutes from Three Oaks and the lakeshore. This is a private event property, not a hotel. Two hundred guests per evening, by design.
+
+<strong>TICKETS</strong>
+General Admission — $35
+Reserved Seating — $75
+Individual nights or all three. uponahill.org
+
+<strong>GOOD TO KNOW</strong>
+· Food and drinks available all evening. Beer and wine for guests 21+ with valid ID.
+· No outside food or beverages.
+· All ages welcome. Service animals only.
+· Rain or shine — the music is under a tent.
+· Accessible parking and accommodations available; contact us ahead of time.
+· No re-entry once you've left for the evening.
+
+<strong>WHERE THE MONEY GOES</strong>
+Net proceeds benefit Neighbor by Neighbor, the New Buffalo Community Education Foundation and the Dune Coast Cares Foundation.
+
+Tickets and full details: uponahill.org</p>
+  </div>
+
+  <div class="meta">
+    <div><strong>Cover image:</strong> Elizabeth Moen photo (Emilio Herce) with the date treatment. Facebook Events crop to 16:9 — build at 1920×1005 and keep type out of the bottom 20%, which the RSVP bar covers on mobile.</div>
+    <div><strong>Category:</strong> Music → Concert. <strong>Keywords:</strong> Americana, indie folk, live music, benefit concert.</div>
+    <div><strong>Co-hosts:</strong> Neighbor by Neighbor · New Buffalo Community Education Foundation · Dune Coast Cares Foundation. Each has to accept the invite before the event reaches their audience, so those go out today.</div>
+    <div><strong>Settings:</strong> Public. uponahill.org in the ticket link field as well as the description — it's a field Facebook surfaces as a button, so it's worth filling even pointing at the homepage. Turn on guest posting so attendees can ask questions publicly; those answers are what convince the next person reading.</div>
+  </div>
+
+  <div class="approve">
+    <span class="lbl">Your call</span>
+    <button class="btn yes" data-item="e1" data-val="approve" aria-pressed="false">👍 Approve</button>
+    <button class="btn edit" data-item="e1" data-val="change" aria-pressed="false">✏️ Change something</button>
+  </div>
+  <textarea class="note" data-item="e1" placeholder="Notes on this event…"></textarea>
+</div>
+
+<!-- EVENT 2 -->
+<div class="card">
+  <div class="card-top">
+    <span class="pill new">Event 2</span>
+    <span class="pill date">Wed · Sept 16</span>
+    <span class="pill theme">Big Sadie</span>
+  </div>
+  <h3>Up On A Hill: Big Sadie</h3>
+  <p class="angle">The middle night, and the one with the deepest local roots — Big Sadie are a Chicago band, which makes them the closest thing on the bill to a hometown act for the drive-over-from-Illinois audience.</p>
+
+  <div class="copyblock fb">
+    <h4>Event description</h4>
+    <p>The second night of Up On A Hill — three evenings of music on a private hillside in Harbor Country, with every ticket supporting three Southwest Michigan nonprofits.
+
+<strong>THE ARTIST</strong>
+Big Sadie is a Chicago roots band: upright bass, guitar, fiddle and close harmony, playing original country songs alongside bluegrass and old-time music that sounds a century old. At the center are Elise Bergman and Collin Moore — a married pair who've been playing together since 2005, she a Chicago native out of the city's blues and folk scene, he raised in East Tennessee learning music from his mother. They formed the band in 2014.
+
+A few things that tell you who they are: when WTTW needed a band to talk about Ken Burns's country music documentary and Chicago's forgotten place in that history, they called Big Sadie. Bloodshot Records — the label that more or less defined Chicago's roots scene — put them on "Too Late to Pray: Defiant Chicago Roots." And one of them teaches fiddle at the Old Town School of Folk Music, which in Chicago is a kind of credential.
+
+If you've ever wanted to hear three voices lock together in a tent on a hill at sunset, this is your night.
+
+<strong>THE EVENING</strong>
+4:00 pm — Gates open. Free parking on site.
+4:30 pm — DJ Quin Kirchner, a Chicago jazz drummer playing deep cuts off his own vinyl.
+6:00 pm — Big Sadie.
+
+<strong>THE PLACE</strong>
+Apple Blossom Resort in New Buffalo, Michigan — a private 18-acre estate in the heart of Harbor Country, just over an hour from downtown Chicago and minutes from Three Oaks and the lakeshore. This is a private event property, not a hotel. Two hundred guests per evening, by design.
+
+<strong>TICKETS</strong>
+General Admission — $35
+Reserved Seating — $75
+Individual nights or all three. uponahill.org
+
+<strong>GOOD TO KNOW</strong>
+· Food and drinks available all evening. Beer and wine for guests 21+ with valid ID.
+· No outside food or beverages.
+· All ages welcome. Service animals only.
+· Rain or shine — the music is under a tent.
+· Accessible parking and accommodations available; contact us ahead of time.
+· No re-entry once you've left for the evening.
+
+<strong>WHERE THE MONEY GOES</strong>
+Net proceeds benefit Neighbor by Neighbor, the New Buffalo Community Education Foundation and the Dune Coast Cares Foundation.
+
+Tickets and full details: uponahill.org</p>
+  </div>
+
+  <div class="meta">
+    <div><strong>Cover image:</strong> BigSadie.jpg, 1920×1005, date treatment top-left.</div>
+    <div><strong>Category:</strong> Music → Concert. <strong>Keywords:</strong> Americana, bluegrass, roots, country, live music.</div>
+    <div><strong>Co-hosts:</strong> Neighbor by Neighbor · New Buffalo Community Education Foundation · Dune Coast Cares Foundation.</div>
+    <div><strong>For the web developer, while you're in there:</strong> the site lists Liam Kazar as "Chicago-based." He's Chicago-born but lives in Brooklyn now. One-line fix, and it's the kind of thing an artist notices.</div>
+    <div><strong>Worth asking the band:</strong> whether September is the trio or the quartet, before we name members in a post. And where the name came from — nobody has ever written that down anywhere, and it would make a great post.</div>
+  </div>
+
+  <div class="approve">
+    <span class="lbl">Your call</span>
+    <button class="btn yes" data-item="e2" data-val="approve" aria-pressed="false">👍 Approve</button>
+    <button class="btn edit" data-item="e2" data-val="change" aria-pressed="false">✏️ Change something</button>
+  </div>
+  <textarea class="note" data-item="e2" placeholder="Notes on this event…"></textarea>
+</div>
+
+<!-- EVENT 3 -->
+<div class="card">
+  <div class="card-top">
+    <span class="pill new">Event 3</span>
+    <span class="pill date">Wed · Sept 30</span>
+    <span class="pill theme">Liam Kazar</span>
+  </div>
+  <h3>Up On A Hill: Liam Kazar</h3>
+  <p class="angle">Our best-performing artist so far by a wide margin — the July 26 post hit 2,800 views on Instagram against 54 on Facebook, on identical copy. Something in his orbit carried it. This event is written to be worth resharing.</p>
+
+  <div class="copyblock fb">
+    <h4>Event description</h4>
+    <p>The final night of the inaugural Up On A Hill — three evenings of music on a private hillside in Harbor Country, with every ticket supporting three Southwest Michigan nonprofits.
+
+<strong>THE ARTIST</strong>
+Liam Kazar writes warm, groove-forward songs somewhere between folk, soul and classic pop — the kind of record that sounds like a Sunday and a Saturday night at the same time. Jeff Tweedy, who would know, says: "Whenever I hear one of his songs for the first time I almost immediately start thinking… I love this song."
+
+Kazar has been a working musician since he was 17, when he played SXSW with the Chicago band Kids These Days. He's spent over a decade in Jeff Tweedy's band and has backed Steve Gunn, Chance the Rapper and Daniel Johnston. His sister is Sima Cunningham of OHMME. His latest album, "Pilot Light," was produced by Sam Evian in the Catskills.
+
+And when the pandemic took away both touring and his bartending job, he started cooking his mother's Armenian recipes for a living — a project he named Isfahan, after a city in Iran with one of the world's oldest Armenian quarters, and after his favorite Duke Ellington tune. He'll tell you he grew up watching Food Network instead of cartoons.
+
+<strong>THE EVENING</strong>
+4:00 pm — Gates open. Free parking on site.
+4:30 pm — DJ Quin Kirchner, a Chicago jazz drummer playing deep cuts off his own vinyl.
+6:00 pm — Liam Kazar.
+
+<strong>THE PLACE</strong>
+Apple Blossom Resort in New Buffalo, Michigan — a private 18-acre estate in the heart of Harbor Country, just over an hour from downtown Chicago and minutes from Three Oaks and the lakeshore. This is a private event property, not a hotel. Two hundred guests per evening, by design.
+
+<strong>TICKETS</strong>
+General Admission — $35
+Reserved Seating — $75
+Individual nights or all three. uponahill.org
+
+<strong>GOOD TO KNOW</strong>
+· Food and drinks available all evening. Beer and wine for guests 21+ with valid ID.
+· No outside food or beverages.
+· All ages welcome. Service animals only.
+· Rain or shine — the music is under a tent.
+· Accessible parking and accommodations available; contact us ahead of time.
+· No re-entry once you've left for the evening.
+
+<strong>WHERE THE MONEY GOES</strong>
+Net proceeds benefit Neighbor by Neighbor, the New Buffalo Community Education Foundation and the Dune Coast Cares Foundation.
+
+Tickets and full details: uponahill.org</p>
+  </div>
+
+  <div class="meta">
+    <div><strong>Cover image:</strong> liamkazar28.jpg, 1920×1005.</div>
+    <div><strong>Category:</strong> Music → Concert. <strong>Keywords:</strong> indie folk, soul, singer-songwriter, live music.</div>
+    <div><strong>Co-hosts:</strong> Neighbor by Neighbor · New Buffalo Community Education Foundation · Dune Coast Cares Foundation.</div>
+    <div><strong>One caution:</strong> describe him as <em>Chicago-raised</em>, not Chicago-based — he lives in Brooklyn now, and the local press has already used "Chicago-based." Small, but artists notice.</div>
+    <div><strong>Worth asking:</strong> whether he'd cook. An Armenian small-plate menu for the closing night, by the artist, would be its own story and its own press release.</div>
+  </div>
+
+  <div class="approve">
+    <span class="lbl">Your call</span>
+    <button class="btn yes" data-item="e3" data-val="approve" aria-pressed="false">👍 Approve</button>
+    <button class="btn edit" data-item="e3" data-val="change" aria-pressed="false">✏️ Change something</button>
+  </div>
+  <textarea class="note" data-item="e3" placeholder="Notes on this event…"></textarea>
+</div>
+
+<div class="actions">
+  <h2>Done reviewing?</h2>
+  <p>Copy your feedback and send it over — or use the email button and it'll open pre-filled.</p>
+  <button class="bigbtn" id="copyall">Copy all feedback</button>
+  <a class="bigbtn alt" id="emailit" href="#">Email it to Blagica</a>
+  <div id="copied"></div>
+</div>
+
+<footer>
+  Prepared by Zlato LLC for Neighbor by Neighbor · <a href="mailto:blagica@zlato.co">blagica@zlato.co</a><br>
+  Draft for review — nothing on this page has been published.
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var KEY = 'uoah-wk4-review';
+  var mem = {};
+  var store = {
+    get: function(){
+      try { return JSON.parse(localStorage.getItem(KEY)) || {}; }
+      catch(e){ return mem; }
+    },
+    set: function(v){
+      mem = v;
+      try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){}
+    }
+  };
+
+  var state = store.get();
+
+  var LABELS = {
+    p1:'Post 1 — Mon Aug 3 — Three nights. Pick yours.',
+    p2:'Post 2 — Wed Aug 5 — Elizabeth Moen fun fact',
+    p3:'Post 3 — Fri Aug 7 — How a night on the hill works',
+    p4:'Post 4 — Sun Aug 9 — This lineup is not a coincidence',
+    e1:'EVENT — Sept 2 — Elizabeth Moen',
+    e2:'EVENT — Sept 16 — Big Sadie',
+    e3:'EVENT — Sept 30 — Liam Kazar'
+  };
+  var ORDER = ['p1','p2','p3','p4','e1','e2','e3'];
+
+  function paint(){
+    document.querySelectorAll('.btn[data-item]').forEach(function(b){
+      var on = state[b.dataset.item] && state[b.dataset.item].val === b.dataset.val;
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('textarea.note').forEach(function(t){
+      var s = state[t.dataset.item];
+      if (s && s.note) t.value = s.note;
+    });
+  }
+
+  document.querySelectorAll('.btn[data-item]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var id = b.dataset.item;
+      state[id] = state[id] || {};
+      state[id].val = (state[id].val === b.dataset.val) ? null : b.dataset.val;
+      store.set(state); paint();
+    });
+  });
+
+  document.querySelectorAll('textarea.note').forEach(function(t){
+    t.addEventListener('input', function(){
+      var id = t.dataset.item;
+      state[id] = state[id] || {};
+      state[id].note = t.value;
+      store.set(state);
+    });
+  });
+
+  function summary(){
+    var out = ['Up On A Hill — Week 4 + Facebook Events — feedback', ''];
+    ORDER.forEach(function(id){
+      var s = state[id] || {};
+      var mark = s.val === 'approve' ? 'APPROVED'
+               : s.val === 'change'  ? 'CHANGE REQUESTED'
+               : 'no response yet';
+      out.push(LABELS[id]);
+      out.push('  ' + mark);
+      if (s.note && s.note.trim()) out.push('  Notes: ' + s.note.trim());
+      out.push('');
+    });
+    return out.join('\n');
+  }
+
+  document.getElementById('copyall').addEventListener('click', function(){
+    var text = summary();
+    var done = function(){
+      document.getElementById('copied').textContent = 'Copied. Paste it into a text or email to Blagica.';
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); }
+      catch(e){ document.getElementById('copied').textContent = 'Select and copy manually, or use the email button.'; }
+      document.body.removeChild(ta);
+    }
+  });
+
+  document.getElementById('emailit').addEventListener('click', function(e){
+    e.preventDefault();
+    window.location.href = 'mailto:blagica@zlato.co'
+      + '?subject=' + encodeURIComponent('Up On A Hill — Week 4 + Events feedback')
+      + '&body=' + encodeURIComponent(summary());
+  });
+
+  paint();
+})();
+</script>
+</body>
+</html>
