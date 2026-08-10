@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Up On A Hill — Week 5 Content for Review</title>
+<style>
+  :root{
+    --cream:#FBF7EF;
+    --teal:#099494;
+    --teal-dk:#066E6E;
+    --gold:#F19A2F;
+    --ink:#22201C;
+    --muted:#6B6660;
+    --line:#E7DFD2;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px 80px}
+
+  header.top{padding:44px 0 10px}
+  .eyebrow{
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--teal);font-weight:700;margin:0 0 10px
+  }
+  h1{font-size:38px;line-height:1.15;margin:0 0 8px;letter-spacing:-.02em}
+  .sub{font-size:18px;color:var(--muted);margin:0 0 4px}
+  .tagline{font-size:15px;color:var(--gold);font-weight:600;letter-spacing:.02em;margin:10px 0 0}
+
+  .instructions{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin:26px 0 34px
+  }
+  .instructions h2{font-size:15px;margin:0 0 10px;letter-spacing:.04em;text-transform:uppercase;color:var(--teal)}
+  .instructions p{margin:0 0 8px;font-size:15px}
+  .instructions p:last-child{margin-bottom:0}
+  .instructions strong{color:var(--ink)}
+
+  .sectionhead{
+    display:flex;align-items:baseline;gap:14px;
+    margin:44px 0 6px;padding-top:14px;border-top:2px solid var(--line)
+  }
+  .sectionhead h2{font-size:24px;margin:0;letter-spacing:-.01em}
+  .sectionhead span{font-size:13px;color:var(--muted)}
+  .sectionnote{font-size:15px;color:var(--muted);margin:0 0 22px;max-width:72ch}
+
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:26px 28px;margin:0 0 22px
+  }
+  .card-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:6px}
+  .pill{
+    font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px
+  }
+  .pill.date{background:var(--teal);color:#fff}
+  .pill.theme{background:#FDF0DC;color:#9A5F0B}
+  .pill.plat{background:#EDF6F6;color:var(--teal-dk)}
+  .card h3{font-size:22px;margin:8px 0 4px;letter-spacing:-.01em}
+  .card .angle{font-size:15px;color:var(--muted);margin:0 0 18px;max-width:74ch}
+
+  .copyblock{
+    border-left:3px solid var(--line);padding:2px 0 2px 18px;margin:0 0 20px
+  }
+  .copyblock.fb{border-left-color:var(--teal)}
+  .copyblock.ig{border-left-color:var(--gold)}
+  .copyblock h4{
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    margin:0 0 8px;color:var(--muted);font-weight:700
+  }
+  .copyblock p{margin:0 0 10px;font-size:16px;white-space:pre-line}
+  .copyblock p:last-child{margin-bottom:0}
+  .tags{font-size:14px;color:var(--teal-dk);word-spacing:.1em}
+
+  .meta{
+    background:#FAF8F4;border:1px solid var(--line);border-radius:10px;
+    padding:14px 16px;margin:0 0 18px;font-size:14px;color:var(--muted)
+  }
+  .meta strong{color:var(--ink);font-weight:600}
+  .meta div{margin-bottom:5px}
+  .meta div:last-child{margin-bottom:0}
+
+  .approve{
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+    border-top:1px solid var(--line);padding-top:16px
+  }
+  .approve .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-right:4px}
+  .btn{
+    border:1.5px solid var(--line);background:#fff;border-radius:999px;
+    padding:8px 16px;font-size:15px;cursor:pointer;font-family:inherit;color:var(--ink);
+    transition:.12s
+  }
+  .btn:hover{border-color:var(--teal)}
+  .btn[aria-pressed="true"].yes{background:var(--teal);border-color:var(--teal);color:#fff}
+  .btn[aria-pressed="true"].edit{background:var(--gold);border-color:var(--gold);color:#fff}
+  textarea.note{
+    width:100%;margin-top:12px;border:1px solid var(--line);border-radius:10px;
+    padding:11px 13px;font-family:inherit;font-size:15px;resize:vertical;min-height:44px;
+    background:#FEFDFB;color:var(--ink)
+  }
+  textarea.note:focus{outline:2px solid var(--teal);outline-offset:1px}
+
+  .actions{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:24px 26px;margin:36px 0 0;text-align:center
+  }
+  .actions h2{font-size:20px;margin:0 0 6px}
+  .actions p{margin:0 0 16px;color:var(--muted);font-size:15px}
+  .bigbtn{
+    display:inline-block;background:var(--teal);color:#fff;border:none;border-radius:999px;
+    padding:13px 26px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;
+    text-decoration:none;margin:0 6px 10px
+  }
+  .bigbtn.alt{background:#fff;color:var(--teal);border:1.5px solid var(--teal)}
+  .bigbtn:hover{opacity:.9}
+  #copied{font-size:14px;color:var(--teal);min-height:20px;margin-top:4px}
+
+  footer{
+    margin-top:46px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:14px;color:var(--muted);text-align:center
+  }
+  footer a{color:var(--teal)}
+
+  @media(max-width:640px){
+    h1{font-size:29px}
+    .card{padding:20px}
+    .wrap{padding:0 16px 60px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Up On A Hill · Content for Review</p>
+  <h1>Week 5</h1>
+  <p class="sub">Facebook &amp; Instagram · August 11–15, 2026</p>
+  <p class="tagline">Theme: Meet All Three. Music. Place. Purpose.</p>
+</header>
+
+<div class="instructions">
+  <h2>How to review this</h2>
+  <p>For each post, tap <strong>👍 Approve</strong> or <strong>✏️ Change</strong>. If you tap Change, type what you'd like different in the box — a sentence is plenty.</p>
+  <p>Your answers save as you go, so you can close this and come back. When you're done, hit <strong>Copy all feedback</strong> at the bottom and text or email it to me. Nothing here is published yet.</p>
+  <p>Revised schedule: <strong>no post today</strong> — what-to-expect has already been covered. The week runs Tuesday, Wednesday, Thursday and Saturday, and by the end of it all three headliners plus the DJ will each have had a real story told about them. <strong>Ticket prices are in every post</strong> — $35 general admission, $75 reserved seating — because the first show is three weeks out and people can't decide to come if they don't know what it costs.</p>
+</div>
+
+<div class="sectionhead">
+  <h2>The four posts</h2><span>Tue · Wed · Thu · Sat</span>
+</div>
+<p class="sectionnote">Four nights of the week, four faces. Tuesday reruns the Elizabeth Moen post — it earned the repeat, and Sept 2 is three weeks from Wednesday. Then Big Sadie, then Quin Kirchner, then Liam Kazar closing the week with the best story in the whole campaign.</p>
+
+<!-- POST 1 -->
+<div class="card">
+  <div class="card-top">
+    <span class="pill date">Tue · Aug 11</span>
+    <span class="pill theme">Artist · Rerun</span>
+    <span class="pill plat">Facebook + Instagram</span>
+  </div>
+  <h3>Elizabeth Moen didn't play her first open mic until she was 20</h3>
+  <p class="angle">Same post as last week, with the price added and a sharper deadline — her show is now three weeks from tomorrow. Reruns work when the first run reached mostly non-followers, which ours did: 87% of everything we've reached has been new to us, so the overlap between run one and run two is small.</p>
+
+  <div class="copyblock fb">
+    <h4>Facebook</h4>
+    <p>Elizabeth Moen opens Up On A Hill three weeks from tomorrow — and she got a very late start.
+
+She taught herself guitar as a teenager in small-town Iowa but didn't play her first open mic until she was 20, as a French and Spanish major at the University of Iowa, at a bar in Iowa City called The Mill. She'd just written her first song.
+
+Nine years later she's toured Europe singing in Kevin Morby's band, shared stages with Brittany Howard, Hozier and Ani DiFranco, and had NPR say she "has remarkable control over her voice that reflects the emotional candor in her lyrics."
+
+Her new record was produced by Spencer Tweedy. She's releasing it herself.
+
+She describes what she does as indie rock grit through the warmth of Midwestern folk. In a tent on a hill at sunset, with two hundred people, that's going to be something.
+
+September 2. Gates at 4. General admission $35, reserved seating $75.
+
+uponahill.org</p>
+  </div>
+
+  <div class="copyblock ig">
+    <h4>Instagram</h4>
+    <p>She didn't play her first open mic until she was 20.
+
+@elizabethmoenmusic taught herself guitar in small-town Iowa, wrote her first song as a French and Spanish major, and walked into a bar in Iowa City to play it.
+
+Since then: touring Europe with Kevin Morby, stages shared with Brittany Howard, Hozier and Ani DiFranco, and a new record produced by Spencer Tweedy.
+
+Paste said her voice "towers over the listener." 🎤
+
+She opens Up On A Hill three weeks from tomorrow — September 2. Gates 4pm.
+$35 GA / $75 reserved.
+
+Link in bio.</p>
+    <p class="tags">#ElizabethMoen #UpOnAHill #IndieFolk #SingerSongwriter #HarborCountry #NewBuffaloMI #ChicagoMusic #MichiganMusic #LiveMusic #SouthwestMichigan #MusicPlacePurpose</p>
+  </div>
+
+  <div class="meta">
+    <div><strong>Visual:</strong> use a <em>different</em> image than the first run — a second Moen photo, or the same one cropped vertical. Same copy with the same picture reads as a duplicate; same copy with a new picture reads as a reminder.</div>
+    <div><strong>Tag:</strong> @elizabethmoenmusic. If she didn't reshare the first time, this is a natural second ask now that her date is close.</div>
+    <div><strong>Boost:</strong> worth $40 behind this one — it's the nearest show and the only one with a real deadline right now.</div>
+  </div>
+
+  <div class="approve">
+    <span class="lbl">Your call</span>
+    <button class="btn yes" data-item="p1" data-val="approve" aria-pressed="false">👍 Approve</button>
+    <button class="btn edit" data-item="p1" data-val="change" aria-pressed="false">✏️ Change something</button>
+  </div>
+  <textarea class="note" data-item="p1" placeholder="Notes on this post…"></textarea>
+</div>
+
+<!-- POST 2 -->
+<div class="card">
+  <div class="card-top">
+    <span class="pill date">Wed · Aug 12</span>
+    <span class="pill theme">Artist · Fun fact</span>
+    <span class="pill plat">Facebook + Instagram</span>
+  </div>
+  <h3>Chicago had a country music radio show before Nashville did</h3>
+  <p class="angle">Big Sadie's turn. The hook isn't the band — it's a piece of history most people have never heard, and Big Sadie are the band who get called to talk about it. It gives a Michigan and Chicago audience a reason to feel some ownership over a roots band, which is exactly the reframe we want for September 16.</p>
+
+  <div class="copyblock fb">
+    <h4>Facebook</h4>
+    <p>Here's something most people don't know: Chicago had a country music radio show before Nashville did. The WLS Barn Dance was on the air before the Grand Ole Opry ever started.
+
+So when WTTW needed a band to talk about that history on Chicago Tonight — when Ken Burns's country music documentary aired — they called Big Sadie.
+
+Big Sadie play Up On A Hill on September 16. They're a Chicago band, built around Elise Bergman on upright bass and Collin Moore on guitar, a married pair who've been playing music together since 2005 — she came up through Chicago's blues and folk scene, he grew up in East Tennessee learning from his mother. One of them teaches fiddle at the Old Town School of Folk Music. Bloodshot Records, the label that more or less defined Chicago roots music, put them on a compilation called "Too Late to Pray: Defiant Chicago Roots."
+
+What they do is old and new at once: upright bass, close harmony, original country songs that sound like they've been around a hundred years.
+
+If you've ever wanted to hear voices lock together like that in a tent on a hill at sunset — this is your night.
+
+September 16. General admission $35, reserved seating $75.
+
+uponahill.org</p>
+  </div>
+
+  <div class="copyblock ig">
+    <h4>Instagram</h4>
+    <p>Chicago had a country radio show before Nashville did. 📻
+
+The WLS Barn Dance was on the air before the Grand Ole Opry existed — and when WTTW needed a band to talk about that history, they called @bigsadiemusic.
+
+They're a Chicago band built around a married pair who've played together since 2005: upright bass, guitar, close harmony, and original country songs that sound a hundred years old.
+
+Bloodshot Records put them on "Too Late to Pray: Defiant Chicago Roots." One of them teaches fiddle at the Old Town School.
+
+September 16 on the hill. $35 GA / $75 reserved.
+
+Link in bio 🌾</p>
+    <p class="tags">#BigSadie #UpOnAHill #Americana #Bluegrass #ChicagoMusic #OldTownSchool #RootsMusic #HarborCountry #NewBuffaloMI #SouthwestMichigan #LiveMusic #MusicPlacePurpose</p>
+  </div>
+
+  <div class="meta">
+    <div><strong>Visual:</strong> BigSadie.jpg. If we can get a live shot from them, use that instead — this post is about a band in a room, and a posed press photo undersells it.</div>
+    <div><strong>Tag:</strong> @bigsadiemusic. Try Collab on Instagram, and DM them the post asking for a story reshare. The artist reshare is still the highest-reach thing available to us.</div>
+    <div><strong>Deliberately not said:</strong> whether they're a trio or a quartet in September. Sources disagree and it's worth confirming with the band before we put a number on it.</div>
+    <div><strong>Ask them:</strong> where the name "Big Sadie" comes from. Nobody has ever written it down anywhere, which means it's an unused story sitting right there.</div>
+  </div>
+
+  <div class="approve">
+    <span class="lbl">Your call</span>
+    <button class="btn yes" data-item="p2" data-val="approve" aria-pressed="false">👍 Approve</button>
+    <button class="btn edit" data-item="p2" data-val="change" aria-pressed="false">✏️ Change something</button>
+  </div>
+  <textarea class="note" data-item="p2" placeholder="Notes on this post…"></textarea>
+</div>
+
+<!-- POST 3 -->
+<div class="card">
+  <div class="card-top">
+    <span class="pill date">Thu · Aug 13</span>
+    <span class="pill theme">The DJ · All three nights</span>
+    <span class="pill plat">Facebook + Instagram</span>
+  </div>
+  <h3>Most festivals play a playlist. We have a jazz drummer with a record bag.</h3>
+  <p class="angle">Quin Kirchner has been mentioned in nearly every post and never given one of his own — and he's the only person on the bill who plays all three nights, so a post about him sells every date at once. It also quietly answers "what happens between 4:30 and 6," which is ninety minutes people currently can't picture.</p>
+
+  <div class="copyblock fb">
+    <h4>Facebook</h4>
+    <p>Every night on the hill starts the same way: gates at 4, and at 4:30, Quin Kirchner starts playing records.
+
+Not a playlist. Records — his own, out of a bag, chosen for that hour and that light. He describes what he plays as moody grooves, dusty funk, cosmic throwbacks and spaced-out oddities, and if you've been to The Whistler in Chicago on the right night, you've heard him do it.
+
+The rest of his résumé is not what you'd expect from someone warming up a crowd. He studied Afro-Cuban percussion in Havana. He won a scholarship to the University of New Orleans at 18 and studied under Jason Marsalis and Terence Blanchard. The Chicago Reader called his first album "the first great jazz album of 2018." Pitchfork gave the follow-up an 8.0. He's played with Jeff Parker, Rob Mazurek and Patricia Barber, in more than twenty countries.
+
+He's also played drums in Erik Hall's bands, which is how he ended up here. Erik curated this festival, and he brought the person he'd want to hear.
+
+So the ninety minutes before the headliner isn't filler. It's the part where you get a drink, find your people, and let someone very good set the evening up.
+
+All three nights — September 2, 16 and 30. General admission $35, reserved seating $75.
+
+uponahill.org</p>
+  </div>
+
+  <div class="copyblock ig">
+    <h4>Instagram</h4>
+    <p>Most festivals play a playlist between sets. We have a jazz drummer with a record bag. 🎧
+
+@quinkirchner opens all three nights at 4:30 — vinyl only. "Moody grooves, dusty funk, cosmic throwbacks and spaced out oddities," in his words.
+
+Studied Afro-Cuban percussion in Havana. Scholarship to New Orleans at 18 under Jason Marsalis and Terence Blanchard. The Chicago Reader called his debut "the first great jazz album of 2018." Pitchfork gave the next one an 8.0.
+
+He's also played drums in Erik Hall's bands — which is how he ended up on this hill.
+
+The 90 minutes before the headliner is not filler.
+
+Sept 2 · 16 · 30 · $35 GA / $75 reserved — link in bio</p>
+    <p class="tags">#QuinKirchner #UpOnAHill #ChicagoJazz #VinylOnly #DJSet #LiveMusic #HarborCountry #NewBuffaloMI #SouthwestMichigan #MichiganMusic #MusicPlacePurpose</p>
+  </div>
+
+  <div class="meta">
+    <div><strong>Visual:</strong> ideally a photo of him behind the decks or at a kit — ask him for one, artists almost always have a favorite. Failing that, a records-and-golden-hour graphic.</div>
+    <div><strong>Tag:</strong> @quinkirchner. He plays all three nights, so a reshare from him works three times over.</div>
+    <div><strong>Why now:</strong> this is the last major figure on the bill without a post, and it closes the loop with the Erik Hall connection.</div>
+  </div>
+
+  <div class="approve">
+    <span class="lbl">Your call</span>
+    <button class="btn yes" data-item="p3" data-val="approve" aria-pressed="false">👍 Approve</button>
+    <button class="btn edit" data-item="p3" data-val="change" aria-pressed="false">✏️ Change something</button>
+  </div>
+  <textarea class="note" data-item="p3" placeholder="Notes on this post…"></textarea>
+</div>
+
+<!-- POST 4 -->
+<div class="card">
+  <div class="card-top">
+    <span class="pill date">Sat · Aug 15</span>
+    <span class="pill theme">Artist · Fun fact</span>
+    <span class="pill plat">Facebook + Instagram</span>
+  </div>
+  <h3>He named his restaurant after a Duke Ellington song</h3>
+  <p class="angle">Liam Kazar is our best-performing subject by a wide margin — the July 26 post did 2,800 views on Instagram against 54 on Facebook, on identical copy. The Isfahan story is the most repostable thing in the whole campaign: specific, warm, and with a double meaning most people will want to tell someone about.</p>
+
+  <div class="copyblock fb">
+    <h4>Facebook</h4>
+    <p>When the pandemic took away both his touring income and his bartending job, Liam Kazar started cooking his mother's Armenian recipes for a living.
+
+He called it Isfahan — after a city in Iran with one of the oldest Armenian quarters in the world, dating back to the 17th century. And, as he'll tell you, after his favorite Duke Ellington tune. Both at once.
+
+He says he grew up watching Food Network instead of cartoons. The menu follows his family's route out of Armenia, through Syria, Lebanon and France, to America.
+
+The music has been going just as long. He played SXSW at seventeen. He's spent more than a decade in Jeff Tweedy's band, and backed Steve Gunn, Chance the Rapper and Daniel Johnston along the way. His sister is Sima Cunningham of OHMME. His latest record, "Pilot Light," was made with Sam Evian in the Catskills.
+
+Jeff Tweedy on him: "Whenever I hear one of his songs for the first time I almost immediately start thinking… I love this song."
+
+Chicago-born, Brooklyn-based, and closing out our first year on September 30.
+
+General admission $35, reserved seating $75.
+
+uponahill.org</p>
+  </div>
+
+  <div class="copyblock ig">
+    <h4>Instagram</h4>
+    <p>He named his restaurant after a Duke Ellington song. 🍽️🎶
+
+When the pandemic took his touring income and his bar job, @liamkazar started cooking his mother's Armenian recipes. He called it Isfahan — after a city in Iran with one of the world's oldest Armenian quarters, and after his favorite Ellington tune. Both.
+
+He grew up watching Food Network instead of cartoons.
+
+He also played SXSW at 17, has spent 10+ years in Jeff Tweedy's band, and made his latest record with Sam Evian in the Catskills.
+
+Tweedy on him: "Whenever I hear one of his songs for the first time I almost immediately start thinking… I love this song."
+
+He closes our first year — September 30. $35 GA / $75 reserved.
+
+Link in bio 🌾</p>
+    <p class="tags">#LiamKazar #UpOnAHill #IndieFolk #SingerSongwriter #ChicagoMusic #JeffTweedy #ArmenianFood #HarborCountry #NewBuffaloMI #SouthwestMichigan #LiveMusic #MusicPlacePurpose</p>
+  </div>
+
+  <div class="meta">
+    <div><strong>Visual:</strong> liamkazar28.jpg. If he's willing to send a photo of the food, run it as a two-slide carousel — artist, then table. That's the version people send to a friend.</div>
+    <div><strong>Tag:</strong> @liamkazar. Given the July 26 numbers, DM him this one personally and ask for the story reshare.</div>
+    <div><strong>Saturday note:</strong> weekend posting is quieter on reach but higher on saves and shares, which suits this one — it's the post people forward rather than the post people click.</div>
+    <div><strong>Still worth asking:</strong> whether he'd cook on September 30. An Armenian menu by the artist on closing night is its own story, and Harbor Country News would run it.</div>
+    <div><strong>Careful:</strong> Chicago-<em>born</em>, Brooklyn-<em>based</em>. He moved. The website still says Chicago-based and should be fixed.</div>
+  </div>
+
+  <div class="approve">
+    <span class="lbl">Your call</span>
+    <button class="btn yes" data-item="p4" data-val="approve" aria-pressed="false">👍 Approve</button>
+    <button class="btn edit" data-item="p4" data-val="change" aria-pressed="false">✏️ Change something</button>
+  </div>
+  <textarea class="note" data-item="p4" placeholder="Notes on this post…"></textarea>
+</div>
+
+<div class="actions">
+  <h2>Done reviewing?</h2>
+  <p>Copy your feedback and send it over — or use the email button and it'll open pre-filled.</p>
+  <button class="bigbtn" id="copyall">Copy all feedback</button>
+  <a class="bigbtn alt" id="emailit" href="#">Email it to Blagica</a>
+  <div id="copied"></div>
+</div>
+
+<footer>
+  Prepared by Zlato LLC for Neighbor by Neighbor · <a href="mailto:blagica@zlato.co">blagica@zlato.co</a><br>
+  Draft for review — nothing on this page has been published.
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var KEY = 'uoah-wk5-review';
+  var mem = {};
+  var store = {
+    get: function(){
+      try { return JSON.parse(localStorage.getItem(KEY)) || {}; }
+      catch(e){ return mem; }
+    },
+    set: function(v){
+      mem = v;
+      try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){}
+    }
+  };
+
+  var state = store.get();
+
+  var LABELS = {
+    p1:'Post 1 — Tue Aug 11 — Elizabeth Moen (rerun)',
+    p2:'Post 2 — Wed Aug 12 — Big Sadie / WLS Barn Dance',
+    p3:'Post 3 — Thu Aug 13 — Quin Kirchner / the DJ',
+    p4:'Post 4 — Sat Aug 15 — Liam Kazar / Isfahan'
+  };
+  var ORDER = ['p1','p2','p3','p4'];
+
+  function paint(){
+    document.querySelectorAll('.btn[data-item]').forEach(function(b){
+      var on = state[b.dataset.item] && state[b.dataset.item].val === b.dataset.val;
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('textarea.note').forEach(function(t){
+      var s = state[t.dataset.item];
+      if (s && s.note) t.value = s.note;
+    });
+  }
+
+  document.querySelectorAll('.btn[data-item]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var id = b.dataset.item;
+      state[id] = state[id] || {};
+      state[id].val = (state[id].val === b.dataset.val) ? null : b.dataset.val;
+      store.set(state); paint();
+    });
+  });
+
+  document.querySelectorAll('textarea.note').forEach(function(t){
+    t.addEventListener('input', function(){
+      var id = t.dataset.item;
+      state[id] = state[id] || {};
+      state[id].note = t.value;
+      store.set(state);
+    });
+  });
+
+  function summary(){
+    var out = ['Up On A Hill — Week 5 — feedback', ''];
+    ORDER.forEach(function(id){
+      var s = state[id] || {};
+      var mark = s.val === 'approve' ? 'APPROVED'
+               : s.val === 'change'  ? 'CHANGE REQUESTED'
+               : 'no response yet';
+      out.push(LABELS[id]);
+      out.push('  ' + mark);
+      if (s.note && s.note.trim()) out.push('  Notes: ' + s.note.trim());
+      out.push('');
+    });
+    return out.join('\n');
+  }
+
+  document.getElementById('copyall').addEventListener('click', function(){
+    var text = summary();
+    var done = function(){
+      document.getElementById('copied').textContent = 'Copied. Paste it into a text or email to Blagica.';
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); }
+      catch(e){ document.getElementById('copied').textContent = 'Select and copy manually, or use the email button.'; }
+      document.body.removeChild(ta);
+    }
+  });
+
+  document.getElementById('emailit').addEventListener('click', function(e){
+    e.preventDefault();
+    window.location.href = 'mailto:blagica@zlato.co'
+      + '?subject=' + encodeURIComponent('Up On A Hill — Week 5 feedback')
+      + '&body=' + encodeURIComponent(summary());
+  });
+
+  paint();
+})();
+</script>
+</body>
+</html>
